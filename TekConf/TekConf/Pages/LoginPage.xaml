@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:LoginPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
+             x:Class="TekConf.Pages.LoginPage">
+  <StackLayout>
+    <Label Text="Login" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button Text="Cancel" Command="{Binding CancelLogin}"></Button>
+  </StackLayout>
+</pages:LoginPageBase>
