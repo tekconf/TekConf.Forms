@@ -1,9 +1,10 @@
 using Xamarin.Forms;
+using TekConf.Infrastructure;
 
 namespace TekConf.ViewModels
 {
     public class ViewModelBase : IViewModel
     {
-        public INavigation Navigation { get; set; }
+		public INavigationService Navigation { get; set; }
     }
 }

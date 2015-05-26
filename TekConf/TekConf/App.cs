@@ -3,6 +3,7 @@ using Cirrious.CrossCore.IoC;
 using TekConf.Pages;
 using TekConf.ViewModels;
 using Xamarin.Forms;
+using TekConf.Infrastructure;
 
 namespace TekConf
 {
@@ -11,10 +12,14 @@ namespace TekConf
         public App()
         {
             MvxSimpleIoCContainer.Initialize();
-            Mvx.RegisterType<ConferencesListViewModel, ConferencesListViewModel>();
-            // The root page of your application
+
+			Mvx.RegisterType<INavigationService, NavigationService> ();
+
+			// The root page of your application
             MainPage = new MainPage();
-        }
+
+		
+		}
 
         protected override void OnStart()
         {

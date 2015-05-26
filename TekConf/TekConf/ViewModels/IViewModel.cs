@@ -1,9 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using TekConf.Infrastructure;
 
 namespace TekConf.ViewModels
 {
     public interface IViewModel
     {
-        INavigation Navigation { get; set; }
+        INavigationService Navigation { get; set; }
     }
 }

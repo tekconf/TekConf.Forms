@@ -1,11 +1,12 @@
 using Cirrious.CrossCore;
 using TekConf.ViewModels;
 using Xamarin.Forms;
+using TekConf.Infrastructure;
 
 namespace TekConf.Pages
 {
 
-    public class ViewPage<T> : ContentPage where T : IViewModel, new()
+    public class ViewPage<T> : ContentPage where T : class, IViewModel, new()
     {
         readonly T _viewModel;
 
@@ -19,11 +20,14 @@ namespace TekConf.Pages
 
         public ViewPage()
         {
+			//_viewModel = Mvx.Resolve<T> ();
             _viewModel = Mvx.IocConstruct<T>();
 
             if (_viewModel != null)
             {
-                _viewModel.Navigation = this.Navigation;
+				var navigation = Mvx.Resolve<INavigationService> ();
+				//var navigation = Mvx.IocConstruct<INavigationService> ();
+				_viewModel.Navigation = navigation;
                 BindingContext = _viewModel;
             }
 

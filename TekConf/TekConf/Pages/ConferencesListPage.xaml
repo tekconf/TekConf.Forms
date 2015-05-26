@@ -7,5 +7,13 @@
     <Label Text="Conferences" VerticalOptions="Center" HorizontalOptions="Center" />
 
     <Button Text="Login" Command="{Binding ShowLogin}"></Button>
+
+    <ListView ItemsSource="{Binding Conferences}">
+    	<ListView.ItemTemplate>
+    		<DataTemplate>
+      			<TextCell Text="{Binding Name}"></TextCell>
+    		</DataTemplate>
+    	</ListView.ItemTemplate>
+    </ListView>
   </StackLayout>
 </pages:ConferencesListPageBase>
