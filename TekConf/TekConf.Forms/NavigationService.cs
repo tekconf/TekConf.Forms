@@ -9,6 +9,7 @@ namespace TekConf.Infrastructure
 	{
 		INavigation _navigation;
 		MasterDetailPage _masterDetailPage;
+		NavigationPage _navigationPage;
 
 		private INavigation Navigation
 		{
@@ -16,25 +17,34 @@ namespace TekConf.Infrastructure
 			{
 				if (_masterDetailPage == null) {
 					_masterDetailPage = Application.Current.MainPage as MasterDetailPage;
+					_navigationPage = _masterDetailPage.Detail as NavigationPage;
 				}
 
 				if (_masterDetailPage != null && _navigation == null) {
-					_navigation = _masterDetailPage.Navigation;
+					_navigation = _navigationPage.Navigation;
 				}
 
 				return _navigation;
 			}
 		}
 
-		public async Task PushAsync (AppPage page)
+		public async Task PushAsync (AppPage page, object parameters)
 		{
 			switch (page) {
 			case AppPage.ConferenceDetailPage:
-				await Navigation.PushAsync (new LoginPage ());
+				await Navigation.PushAsync (new ConferenceDetailPage ((string)parameters));
 				if (Device.Idiom == TargetIdiom.Phone) {
 					_masterDetailPage.IsPresented = false;
 				}
 				break;
+			default:
+				throw new ArgumentOutOfRangeException ("page");
+			}
+		}
+
+		public async Task PushAsync (AppPage page)
+		{
+			switch (page) {
 			case AppPage.LoginPage:
 				await Navigation.PushAsync (new LoginPage ());
 				break;

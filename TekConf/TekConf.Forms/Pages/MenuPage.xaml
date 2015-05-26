@@ -4,6 +4,7 @@
              xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
              x:Class="TekConf.Pages.MenuPage" Title="Menu" Icon="hamburger.png">
 
-
-  <ListView ItemsSource="{Binding MenuItems}"></ListView>
+	<StackLayout>
+	  <ListView ItemsSource="{Binding MenuItems}"></ListView>
+	</StackLayout>
 </pages:MenuPageBase>

@@ -25,9 +25,8 @@ namespace TekConf.ViewModels
 			this.Conferences = new ObservableCollection<ConferenceListModel> ();
 
 			this.ShowLogin = new DelegateCommand (async () => await OnShowLogin ());
-			this.ShowDetail = new DelegateCommand<string> (async (slug) => await OnShowDetail (slug));
 
-			GetConferences ();
+			Task.Run(() => GetConferences ());
 		}
 
 		async Task OnShowLogin ()
@@ -35,10 +34,6 @@ namespace TekConf.ViewModels
 			await this.Navigation.PushModalAsync (AppPage.LoginPage);
 		}
 
-		async Task OnShowDetail(string slug)
-		{
-			await this.Navigation.PushAsync (AppPage.LoginPage);
-		}
 
 		private async Task GetConferences ()
 		{
@@ -46,10 +41,87 @@ namespace TekConf.ViewModels
 
 			var conferences = new List<ConferenceListModel> () { 
 				new ConferenceListModel () {
+					Slug = "conference-1",
 					Name = "Conference 1",
 					Start = DateTime.Now.AddMonths (-1),
 					End = DateTime.Now.AddDays (-15)
-				}
+				},
+				new ConferenceListModel () {
+					Slug = "conference-2",
+					Name = "Conference 2",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 3",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 4",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 5",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 6",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 7",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 8",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 9",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 10",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 11",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 12",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 13",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 14",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 15",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
+				new ConferenceListModel () {
+					Name = "Conference 16",
+					Start = DateTime.Now.AddMonths (-1),
+					End = DateTime.Now.AddDays (-15)
+				},
 			};
 
 			await Task.Delay (1500);

@@ -13,7 +13,8 @@ namespace TekConf
         {
             MvxSimpleIoCContainer.Initialize();
 
-			Mvx.RegisterType<INavigationService, NavigationService> ();
+			Mvx.RegisterSingleton<INavigationService> (() => new NavigationService());
+			//Mvx.RegisterType<INavigationService, NavigationService> ();
 
 			// The root page of your application
             MainPage = new MainPage();
