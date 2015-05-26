@@ -8,7 +8,7 @@
     <ProjectGuid>{75C36141-914D-4E54-A283-5CE0CEAA6D19}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TekConf</RootNamespace>
+    <RootNamespace>TekConf.Forms</RootNamespace>
     <AssemblyName>TekConf</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile49</TargetFrameworkProfile>
@@ -55,16 +55,7 @@
     </Compile>
     <Compile Include="Pages\ViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ConferencesListViewModel.cs" />
-    <Compile Include="ViewModels\IViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Models\ConferenceModel.cs" />
-    <Compile Include="ViewModels\Data\ConferenceListModel.cs" />
-    <Compile Include="Infrastructure\INavigationService.cs" />
-    <Compile Include="Infrastructure\NavigationService.cs" />
-    <Compile Include="Infrastructure\AppPage.cs" />
+    <Compile Include="NavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -147,8 +138,9 @@
   </Target>
   -->
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\Data\" />
-    <Folder Include="Infrastructure\" />
+    <ProjectReference Include="..\TekConf.Core\TekConf.Core.csproj">
+      <Project>{25892563-17F3-4F53-8A5E-EA62BB3A480F}</Project>
+      <Name>TekConf.Core</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,4 +1,3 @@
-using Xamarin.Forms;
 using TekConf.Infrastructure;
 
 namespace TekConf.ViewModels

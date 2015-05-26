@@ -97,12 +97,6 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TekConf\TekConf.csproj">
-      <Name>TekConf</Name>
-      <Project>{75C36141-914D-4E54-A283-5CE0CEAA6D19}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Default-Portrait.png" />
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
@@ -170,4 +164,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\TekConf.Forms\TekConf.Forms.csproj">
+      <Project>{75C36141-914D-4E54-A283-5CE0CEAA6D19}</Project>
+      <Name>TekConf.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

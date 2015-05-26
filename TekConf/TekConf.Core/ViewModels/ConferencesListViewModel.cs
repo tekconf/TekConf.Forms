@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
-using TekConf.Pages;
-using Xamarin.Forms;
 using TekConf.ViewModels.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
 using TekConf.Infrastructure;
+using TekConf.Core;
 
 namespace TekConf.ViewModels
 {
@@ -25,8 +24,8 @@ namespace TekConf.ViewModels
 		{
 			this.Conferences = new ObservableCollection<ConferenceListModel> ();
 
-			this.ShowLogin = new Command (async () => await OnShowLogin ());
-			this.ShowDetail = new Command<string> (async (slug) => await OnShowDetail (slug));
+			this.ShowLogin = new DelegateCommand (async () => await OnShowLogin ());
+			this.ShowDetail = new DelegateCommand<string> (async (slug) => await OnShowDetail (slug));
 
 			GetConferences ();
 		}

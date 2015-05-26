@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
-using TekConf.Pages;
-using Xamarin.Forms;
+using TekConf.Core;
 
 namespace TekConf.ViewModels
 {
@@ -13,7 +12,7 @@ namespace TekConf.ViewModels
 
         public LoginViewModel()
         {
-            this.CancelLogin = new Command(async () => await OnCancelLogin());
+			this.CancelLogin = new DelegateCommand(async () => await OnCancelLogin());
         }
 
         async Task OnCancelLogin()

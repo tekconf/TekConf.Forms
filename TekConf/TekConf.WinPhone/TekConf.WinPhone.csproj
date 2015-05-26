@@ -157,8 +157,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TekConf\TekConf.csproj">
-      <Name>TekConf</Name>
+    <ProjectReference Include="..\TekConf.Forms\TekConf.Forms.csproj">
+      <Name>TekConf.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
