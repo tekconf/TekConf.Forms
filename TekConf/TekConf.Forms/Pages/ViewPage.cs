@@ -6,7 +6,7 @@ using TekConf.Infrastructure;
 namespace TekConf.Pages
 {
 
-    public class ViewPage<T> : ContentPage where T : class, IViewModel, new()
+    public class ViewPage<T> : ContentPage where T : class, IViewModel
     {
         readonly T _viewModel;
 

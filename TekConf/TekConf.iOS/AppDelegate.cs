@@ -4,6 +4,9 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Cirrious.CrossCore;
+using TekConf.Infrastructure;
+using Cirrious.CrossCore.IoC;
 
 namespace TekConf.iOS
 {
@@ -23,6 +26,13 @@ namespace TekConf.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+			Bootstrapper.Init();
+
+			MvxSimpleIoCContainer.Initialize();
+
+			Mvx.RegisterType<IFileAccessHelper, FileAccessHelper> ();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

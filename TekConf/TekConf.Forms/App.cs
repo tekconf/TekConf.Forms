@@ -4,27 +4,24 @@ using TekConf.Pages;
 using TekConf.ViewModels;
 using Xamarin.Forms;
 using TekConf.Infrastructure;
+using TekConf.Core;
 
 namespace TekConf
 {
     public class App : Application
     {
-        public App()
+		public App()
         {
-            MvxSimpleIoCContainer.Initialize();
-
 			Mvx.RegisterSingleton<INavigationService> (() => new NavigationService());
-			//Mvx.RegisterType<INavigationService, NavigationService> ();
+			Mvx.RegisterType<IConferenceRepository, ConferenceRepository> ();
 
-			// The root page of your application
             MainPage = new MainPage();
-
-		
 		}
 
         protected override void OnStart()
         {
             // Handle when your app starts
+
         }
 
         protected override void OnSleep()
