@@ -10,6 +10,7 @@ namespace TekConf.Pages
 		public ConferenceDetailPage (string slug)
 		{
 			InitializeComponent ();
+			this.ViewModel.Load.Execute (slug);
 		}
 	}
 }

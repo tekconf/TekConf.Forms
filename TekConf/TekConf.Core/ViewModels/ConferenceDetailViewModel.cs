@@ -1,18 +1,35 @@
 using System.Threading.Tasks;
-using System.Windows.Input;
 using PropertyChanged;
-using TekConf.ViewModels.Data;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System;
-using TekConf.Infrastructure;
+using System.Windows.Input;
 using TekConf.Core;
+using TekConf.ViewModels.Data;
+using Humanizer;
+using System.ComponentModel;
+using System;
 
 namespace TekConf.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferenceDetailViewModel : ViewModelBase
 	{
+		public ICommand Load { get; set; }
+
+		public string Name { get; set; }
+
+		public string Slug { get; set; }
+
+		public DateTime? Start { get; set; }
+
+		public DateTime? End { get; set; }
+
+		public ConferenceDetailViewModel ()
+		{
+			this.Load = new DelegateCommand<string> (async (slug) => await OnLoad(slug));
+		}
+
+		private async Task OnLoad(string slug)
+		{
+			this.Slug = slug.Humanize ();
+		}
 	}
-	
 }

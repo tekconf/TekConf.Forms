@@ -7,12 +7,14 @@ using System.Collections.ObjectModel;
 using System;
 using TekConf.Infrastructure;
 using TekConf.Core;
+using System.ComponentModel;
 
 namespace TekConf.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferencesListViewModel : ViewModelBase
 	{
+		//public override event PropertyChangedEventHandler PropertyChanged;
 		public ICommand ShowLogin { get; private set; }
 		public ICommand ShowDetail { get; private set; }
 

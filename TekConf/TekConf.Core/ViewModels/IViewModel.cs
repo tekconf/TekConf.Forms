@@ -1,4 +1,5 @@
 ﻿using TekConf.Infrastructure;
+using System.ComponentModel;
 
 namespace TekConf.ViewModels
 {

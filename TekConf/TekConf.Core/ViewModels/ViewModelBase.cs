@@ -1,9 +1,12 @@
 using TekConf.Infrastructure;
+using System.ComponentModel;
 
 namespace TekConf.ViewModels
 {
-    public class ViewModelBase : IViewModel
+    public abstract class ViewModelBase : IViewModel//, INotifyPropertyChanged
     {
+		//public abstract event PropertyChangedEventHandler PropertyChanged;
+
 		public INavigationService Navigation { get; set; }
     }
 }
