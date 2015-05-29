@@ -4,5 +4,4 @@ namespace TekConf.Infrastructure
 	{
 		string GetLocalFilePath ();
 	}
-	
 }

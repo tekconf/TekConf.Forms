@@ -2,15 +2,12 @@
 using System.Windows.Input;
 using PropertyChanged;
 using TekConf.Core;
-using System.ComponentModel;
 
 namespace TekConf.ViewModels
 {
     [ImplementPropertyChanged]
     public class LoginViewModel : ViewModelBase
     {
-		//public override event PropertyChangedEventHandler PropertyChanged;
-
         public ICommand CancelLogin { get; private set; }
 
         public LoginViewModel()

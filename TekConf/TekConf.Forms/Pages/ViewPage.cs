@@ -5,7 +5,6 @@ using TekConf.Infrastructure;
 
 namespace TekConf.Pages
 {
-
     public class ViewPage<T> : ContentPage where T : class, IViewModel
     {
         readonly T _viewModel;
@@ -20,13 +19,11 @@ namespace TekConf.Pages
 
         public ViewPage()
         {
-			//_viewModel = Mvx.Resolve<T> ();
             _viewModel = Mvx.IocConstruct<T>();
 
             if (_viewModel != null)
             {
 				var navigation = Mvx.Resolve<INavigationService> ();
-				//var navigation = Mvx.IocConstruct<INavigationService> ();
 				_viewModel.Navigation = navigation;
                 BindingContext = _viewModel;
             }

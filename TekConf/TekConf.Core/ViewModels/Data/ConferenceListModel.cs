@@ -5,16 +5,12 @@ using TekConf.Core;
 using System.Threading.Tasks;
 using TekConf.Infrastructure;
 using Cirrious.CrossCore;
-using System.ComponentModel;
 
 namespace TekConf.ViewModels.Data
 {
-
 	[ImplementPropertyChanged]
 	public class ConferenceListModel : ViewModelBase
 	{
-		//public override event PropertyChangedEventHandler PropertyChanged;
-
 		public string Name { get; set; }
 
 		public string Slug { get; set; }

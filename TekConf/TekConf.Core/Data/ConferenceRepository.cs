@@ -19,10 +19,7 @@ namespace TekConf.Core
 
 		public async Task AddAsync (ConferenceModel conference)
 		{
-			try {
-				var result = await _connection.InsertAsync (conference);
-			} catch (Exception ex) {
-			}
+			var result = await _connection.InsertAsync (conference);
 		}
 
 		public async Task<List<ConferenceModel>> GetAllAsync ()

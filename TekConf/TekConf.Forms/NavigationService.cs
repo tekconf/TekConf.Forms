@@ -45,9 +45,6 @@ namespace TekConf.Infrastructure
 		public async Task PushAsync (AppPage page)
 		{
 			switch (page) {
-			case AppPage.LoginPage:
-				await Navigation.PushAsync (new LoginPage ());
-				break;
 			default:
 				throw new ArgumentOutOfRangeException ("page");
 			}
@@ -56,16 +53,9 @@ namespace TekConf.Infrastructure
 		public async Task PushModalAsync (AppPage page)
 		{
 			switch (page) {
-			case AppPage.ConferenceDetailPage:
-				await Navigation.PushModalAsync (new LoginPage ());
-				break;
 			case AppPage.LoginPage:
 				await Navigation.PushModalAsync (new LoginPage ());
 				break;
-			//			case AppPage.DetailPage:
-			//				if (Device.Idiom == TargetIdiom.Phone)
-			//					mdPage.IsPresented = false;
-			//				break;
 			default:
 				throw new ArgumentOutOfRangeException ("page");
 			}

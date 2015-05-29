@@ -42,7 +42,6 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Infrastructure\DelegateCommand.cs" />
     <Compile Include="ViewModels\ConferenceDetailViewModel.cs" />
-    <Compile Include="ViewModels\Data\ConferenceDetailModel.cs" />
     <Compile Include="Data\IConferenceRepository.cs" />
     <Compile Include="Data\ConferenceRepository.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />

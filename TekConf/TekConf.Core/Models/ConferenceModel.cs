@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using SQLite;
 
 namespace TekConf
@@ -101,5 +100,4 @@ namespace TekConf
 //
 //		public List<object> Sessions { get; set; }
 	}
-
 }

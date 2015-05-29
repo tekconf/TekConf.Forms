@@ -1,6 +1,5 @@
 namespace TekConf.Infrastructure
 {
-
 	public enum AppPage
 	{
 		LoginPage,
