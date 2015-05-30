@@ -50,9 +50,6 @@ namespace TekConf.Infrastructure
 		public async Task PushModalAsync (AppPage page)
 		{
 			switch (page) {
-			case AppPage.LoginPage:
-				await Navigation.PushModalAsync (new LoginPage ());
-				break;
 			default:
 				throw new ArgumentOutOfRangeException ("page");
 			}

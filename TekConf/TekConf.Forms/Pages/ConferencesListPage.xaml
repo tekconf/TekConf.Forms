@@ -6,8 +6,6 @@
 
 
   <StackLayout>
-    <Button Text="Login" Command="{Binding ShowLogin}"></Button>
-
     <ListView ItemsSource="{Binding Conferences}">
     	<ListView.ItemTemplate>
     		<DataTemplate>

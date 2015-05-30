@@ -2,9 +2,9 @@
 
 namespace TekConf.Pages
 {
-    public partial class MySchedulePage : ContentPage
+    public partial class MyConferencesPage : ContentPage
     {
-        public MySchedulePage()
+		public MyConferencesPage()
         {
             InitializeComponent();
         }

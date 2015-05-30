@@ -13,7 +13,6 @@ namespace TekConf.ViewModels
 	[ImplementPropertyChanged]
 	public class ConferencesListViewModel : ViewModelBase
 	{
-		public ICommand ShowLogin { get; private set; }
 		public ICommand ShowDetail { get; private set; }
 
 		public ObservableCollection<ConferenceListModel> Conferences { get; set; }
@@ -28,14 +27,7 @@ namespace TekConf.ViewModels
 
 			this.Conferences = new ObservableCollection<ConferenceListModel> ();
 
-			this.ShowLogin = new DelegateCommand (async () => await OnShowLogin ());
-
 			Task.Run(async () => await GetConferences());
-		}
-
-		async Task OnShowLogin ()
-		{
-			await this.Navigation.PushModalAsync (AppPage.LoginPage);
 		}
 
 		private async Task GetConferences ()

@@ -11,9 +11,14 @@
 			<pages:ConferencesListPage />
 		</x:Arguments>
 	</NavigationPage>
-	<NavigationPage Title="My Schedule">
+	<NavigationPage Title="My Conferences">
 		<x:Arguments>
-			<pages:MySchedulePage />
+			<pages:MyConferencesPage />
+		</x:Arguments>
+	</NavigationPage>
+	<NavigationPage Title="Login">
+		<x:Arguments>
+			<pages:LoginPage Title="Login" />
 		</x:Arguments>
 	</NavigationPage>
 </TabbedPage>
