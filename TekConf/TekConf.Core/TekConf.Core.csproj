@@ -38,7 +38,6 @@
     <Compile Include="ViewModels\Data\ConferenceListModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Infrastructure\DelegateCommand.cs" />
     <Compile Include="ViewModels\ConferenceDetailViewModel.cs" />

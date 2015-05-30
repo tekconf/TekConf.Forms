@@ -11,7 +11,7 @@ namespace TekConf
         {
 			Mvx.RegisterSingleton<INavigationService> (() => new NavigationService());
 
-            MainPage = new MainPage();
+            MainPage = new MainTabPage();
 		}
     }
 }

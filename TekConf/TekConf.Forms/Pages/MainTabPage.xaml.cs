@@ -12,8 +12,11 @@ namespace TekConf.Pages
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			var navigationPage = this.Children [0] as NavigationPage;
-			NavigationPage.SetHasNavigationBar (navigationPage, true);
+
+			foreach (var tab in this.Children) {
+				var navigationPage = tab as NavigationPage;
+				NavigationPage.SetHasNavigationBar (navigationPage, false);
+			}
 		}
     }
 }

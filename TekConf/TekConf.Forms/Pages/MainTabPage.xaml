@@ -6,10 +6,14 @@
 		x:Class="TekConf.Pages.MainTabPage" 
 		Title="Tabs">
 
-	<NavigationPage Title="Main Nav Page">
+	<NavigationPage Title="Conferences">
 		<x:Arguments>
-			<pages:ConferencesListPage Title="List Page" />
+			<pages:ConferencesListPage />
 		</x:Arguments>
 	</NavigationPage>
-	<pages:MySchedulePage Title="My Schedule" />
+	<NavigationPage Title="My Schedule">
+		<x:Arguments>
+			<pages:MySchedulePage />
+		</x:Arguments>
+	</NavigationPage>
 </TabbedPage>
