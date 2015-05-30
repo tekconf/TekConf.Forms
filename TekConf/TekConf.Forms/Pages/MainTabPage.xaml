@@ -1,10 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
-             x:Class="TekConf.Pages.MainTabPage" Title="Tabs">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf" 
+		x:Class="TekConf.Pages.MainTabPage" 
+		Title="Tabs">
 
-
-  <pages:ConferencesListPage Title="Conferences"></pages:ConferencesListPage>
-  <pages:MySchedulePage Title="My Schedule"></pages:MySchedulePage>
+	<NavigationPage Title="Main Nav Page">
+		<x:Arguments>
+			<pages:ConferencesListPage Title="List Page" />
+		</x:Arguments>
+	</NavigationPage>
+	<pages:MySchedulePage Title="My Schedule" />
 </TabbedPage>

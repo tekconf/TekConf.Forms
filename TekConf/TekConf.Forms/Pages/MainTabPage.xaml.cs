@@ -8,5 +8,12 @@ namespace TekConf.Pages
         {
             InitializeComponent();
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			var navigationPage = this.Children [0] as NavigationPage;
+			NavigationPage.SetHasNavigationBar (navigationPage, true);
+		}
     }
 }
