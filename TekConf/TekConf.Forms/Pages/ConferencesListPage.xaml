@@ -9,7 +9,12 @@
     <ListView ItemsSource="{Binding Conferences}">
     	<ListView.ItemTemplate>
     		<DataTemplate>
-      			<TextCell Text="{Binding Name}" Command="{Binding ShowDetail}" CommandParameter="{Binding Slug}"></TextCell>
+    			<ViewCell>
+    				<StackLayout>
+    					<Label Text="{Binding Name}" />
+    					<Label Text="{Binding Start}" />
+    				</StackLayout>
+    			</ViewCell>
     		</DataTemplate>
     	</ListView.ItemTemplate>
     </ListView>
