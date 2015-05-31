@@ -22,16 +22,16 @@ namespace TekConf.Core
 
 		public async Task<List<ConferenceDto>> GetConferences(Priority priority)
 		{
-			var conferences = await GetRemoteConferencesAsync (priority);
-//			var cache = BlobCache.LocalMachine;
-//			var cachedConferences = cache.GetAndFetchLatest("conferences", () => GetRemoteConferencesAsync(priority),
-//				offset =>
-//				{
-//					TimeSpan elapsed = DateTimeOffset.Now - offset;
-//					return elapsed > new TimeSpan(hours: 0, minutes: 0, seconds: 0);
-//				});
-//
-//			var conferences = await cachedConferences.FirstOrDefaultAsync();
+//			var conferences = await GetRemoteConferencesAsync (priority);
+			var cache = BlobCache.LocalMachine;
+			var cachedConferences = cache.GetAndFetchLatest("conferences", () => GetRemoteConferencesAsync(priority),
+				offset =>
+				{
+					TimeSpan elapsed = DateTimeOffset.Now - offset;
+					return elapsed > new TimeSpan(hours: 0, minutes: 0, seconds: 300);
+				});
+
+			var conferences = await cachedConferences.FirstOrDefaultAsync();
 			return conferences;
 		}
 
@@ -72,7 +72,7 @@ namespace TekConf.Core
 			//{
 			try
 			{
-			conferences = await getConferencesTask;
+				conferences = await getConferencesTask;
 			}
 			catch (Exception ex) {
 				var sds = ex.Message;

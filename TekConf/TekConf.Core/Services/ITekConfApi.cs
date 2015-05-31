@@ -8,7 +8,7 @@ namespace TekConf.Core
 	[Headers("Accept: application/json")]
 	public interface ITekConfApi  
 	{
-		[Get("/conferences")]
+		[Get("/conferences?showPastConferences=true")]
 		Task<List<ConferenceDto>> GetConferences();
 
 		[Get("/conferences/{slug}")]
