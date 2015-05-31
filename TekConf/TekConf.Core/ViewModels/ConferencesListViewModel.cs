@@ -4,40 +4,45 @@ using PropertyChanged;
 using TekConf.ViewModels.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TekConf.Infrastructure;
 using TekConf.Core;
 using AutoMapper;
+using Fusillade;
 
 namespace TekConf.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferencesListViewModel : ViewModelBase
 	{
-		public ICommand ShowDetail { get; private set; }
+		public ICommand Load { get; private set; }
 
-		public ObservableCollection<ConferenceListModel> Conferences { get; set; }
+		public ObservableCollection<ConferenceDto> Conferences { get; set; } = new ObservableCollection<ConferenceDto> ();
 
 		public bool IsLoading { get; set; }
 
-		readonly IConferenceRepository _conferenceRepository;
+		readonly IConferencesService _conferencesService;
 
-		public ConferencesListViewModel (IConferenceRepository conferenceRepository)
+		public ConferencesListViewModel (IConferencesService conferencesService)
 		{
-			_conferenceRepository = conferenceRepository;
+			_conferencesService = conferencesService;
 
-			this.Conferences = new ObservableCollection<ConferenceListModel> ();
+			Load = new DelegateCommand (OnLoad);
+		}
 
-			Task.Run(async () => await GetConferences());
+		private void OnLoad ()
+		{
+			 GetConferences ();
 		}
 
 		private async Task GetConferences ()
 		{
 			this.IsLoading = true;
 
-			var conferenceModels = await _conferenceRepository.GetAllAsync ();
+			var conferences = await _conferencesService
+				.GetConferences (Priority.Explicit);
+			//.ConfigureAwait(false);
 
-			var conferences = Mapper.Map<List<ConferenceListModel>> (conferenceModels);
-			this.Conferences = new ObservableCollection<ConferenceListModel> (conferences);
+//			var conferences = Mapper.Map<List<ConferenceListModel>> (conferenceModels);
+			this.Conferences = new ObservableCollection<ConferenceDto> (conferences);
 
 			this.IsLoading = false;
 		}

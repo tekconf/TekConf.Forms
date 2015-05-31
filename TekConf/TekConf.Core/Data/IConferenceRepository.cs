@@ -10,5 +10,4 @@ namespace TekConf.Core
 		Task AddAsync(ConferenceModel conference);
 		Task<List<ConferenceModel>> GetAllAsync ();
 	}
-	
 }

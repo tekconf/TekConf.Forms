@@ -9,6 +9,7 @@ namespace TekConf.Pages
         public ConferencesListPage()
         {
             InitializeComponent();
+			this.ViewModel.Load.Execute(null);
         }
     }
 }

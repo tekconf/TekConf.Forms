@@ -5,4 +5,5 @@ namespace TekConf.Infrastructure
 		LoginPage,
 		ConferenceDetailPage,
 	}
+
 }

@@ -13,7 +13,10 @@ namespace TekConf.Infrastructure
 			Mapper.CreateMap<ConferenceModel, ConferenceListModel> ();
 
 			MvxSimpleIoCContainer.Initialize();
+
 			Mvx.RegisterType<IConferenceRepository, ConferenceRepository> ();
+			Mvx.RegisterType<IApiService, ApiService> ();
+			Mvx.RegisterType<IConferencesService, ConferencesService> ();
 		}
 	}
 }
