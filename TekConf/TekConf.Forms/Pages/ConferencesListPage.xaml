@@ -9,13 +9,14 @@
     <ListView
         ItemsSource="{Binding Conferences}"
         HasUnevenRows="true"
-        SeparatorColor="Gray" SelectedItem="{Binding SelectedConference}">
+        SeparatorColor="Gray" 
+        ItemSelected="OnConferenceSelected" x:Name="conferencesList">
     	<ListView.ItemTemplate>
     		<DataTemplate>
     			<ViewCell>
     				<StackLayout Padding="10">
-    					<Label Text="{Binding Name}" />
-    					<Label Text="{Binding Start}" />
+    					<Label Text="{Binding Name}" TextColor="Black" />
+    					<Label Text="{Binding Start}" TextColor="Black" />
     				</StackLayout>
     			</ViewCell>
     		</DataTemplate>

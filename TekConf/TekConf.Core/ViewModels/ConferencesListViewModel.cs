@@ -22,32 +22,20 @@ namespace TekConf.ViewModels
 		public bool IsLoading { get; set; }
 
 		readonly IConferencesService _conferencesService;
-	    private ConferenceDto _selectedConference;
-
-	    public ConferenceDto SelectedConference
-	    {
-	        get
-	        {
-	            return _selectedConference;
-	        }
-	        set
-	        {
-	            _selectedConference = value;
-	        }
-	    }
 
 	    public ConferencesListViewModel (IConferencesService conferencesService)
 		{
 			_conferencesService = conferencesService;
 
 			Load = new DelegateCommand (OnLoad);
-		    ShowDetail = new AsyncDelegateCommand<string>(slug => OnShowDetail(slug));
+		    ShowDetail = new AsyncDelegateCommand<ConferenceDto>(conference => OnShowDetail(conference));
 		}
 
-	    private async Task OnShowDetail(string slug)
+	    private async Task OnShowDetail(ConferenceDto conference)
 	    {
-	       await this.Navigation.PushAsync(AppPage.ConferenceDetailPage, slug);
+	       await this.Navigation.PushAsync(AppPage.ConferenceDetailPage, conference.Slug);
 	    }
+
 		private void OnLoad ()
 		{
 			 GetConferences ();
@@ -59,9 +47,7 @@ namespace TekConf.ViewModels
 
 			var conferences = await _conferencesService
 				.GetConferences (Priority.Explicit);
-			//.ConfigureAwait(false);
 
-//			var conferences = Mapper.Map<List<ConferenceListModel>> (conferenceModels);
 			this.Conferences = new ObservableCollection<ConferenceDto> (conferences);
 
 			this.IsLoading = false;

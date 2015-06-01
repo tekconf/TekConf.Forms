@@ -23,14 +23,19 @@ namespace TekConf.Core
 
 		public async Task<List<ConferenceDto>> GetConferences (Priority priority)
 		{
-			var cache = BlobCache.LocalMachine;
-			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
-				                        offset => {
-					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
-				});
+			var conferences =  await _apiService.UserInitiated.GetConferences ();
+			conferences = conferences.OrderByDescending (c => c.Start).Take (50).ToList ();
 
-			var conferences = await cachedConferences.FirstOrDefaultAsync ();
+//			var cache = BlobCache.LocalMachine;
+//			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
+//				                        offset => {
+//					TimeSpan elapsed = DateTimeOffset.Now - offset;
+//					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+//				});
+//
+//			var conferences = await cachedConferences.FirstOrDefaultAsync ();
+
+
 			return conferences;
 		}
 
@@ -77,7 +82,7 @@ namespace TekConf.Core
 					.ExecuteAsync (() => getConferencesTask);
 			//}
 			if (conferences != null && conferences.Any ()) {
-				conferences = conferences.OrderBy (c => c.Start).ToList ();
+				conferences = conferences.Take(10).OrderBy (c => c.Start).ToList ();
 			}
 			return conferences;
 		}

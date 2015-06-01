@@ -5,6 +5,6 @@
 	x:Class="TekConf.Pages.ConferenceDetailPage">
 
 	<StackLayout>
-		<Label Text="{Binding Slug}"></Label>
+		<Label Text="{Binding Slug}" TextColor="Black"></Label>
 	</StackLayout>
 </ConferenceDetailPageBase>
