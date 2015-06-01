@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace TekConf.Core
 {
-	public sealed class DelegateCommand : ICommand
+    public sealed class DelegateCommand : ICommand
 	{
 		readonly Action<object> command;
 		readonly Func<object, bool> canExecute;
@@ -94,7 +94,7 @@ namespace TekConf.Core
 			this.command ((T)parameter);
 		}
 	}
-		
+
 	public class AsyncDelegateCommand : ICommand
 	{
 		protected readonly Predicate<object> _canExecute;

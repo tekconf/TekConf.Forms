@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using TekConf.Core;
 using AutoMapper;
 using Fusillade;
+using TekConf.Infrastructure;
 
 namespace TekConf.ViewModels
 {
@@ -14,20 +15,39 @@ namespace TekConf.ViewModels
 	public class ConferencesListViewModel : ViewModelBase
 	{
 		public ICommand Load { get; private set; }
+        public ICommand ShowDetail { get; private set; }
 
 		public ObservableCollection<ConferenceDto> Conferences { get; set; } = new ObservableCollection<ConferenceDto> ();
 
 		public bool IsLoading { get; set; }
 
 		readonly IConferencesService _conferencesService;
+	    private ConferenceDto _selectedConference;
 
-		public ConferencesListViewModel (IConferencesService conferencesService)
+	    public ConferenceDto SelectedConference
+	    {
+	        get
+	        {
+	            return _selectedConference;
+	        }
+	        set
+	        {
+	            _selectedConference = value;
+	        }
+	    }
+
+	    public ConferencesListViewModel (IConferencesService conferencesService)
 		{
 			_conferencesService = conferencesService;
 
 			Load = new DelegateCommand (OnLoad);
+		    ShowDetail = new AsyncDelegateCommand<string>(slug => OnShowDetail(slug));
 		}
 
+	    private async Task OnShowDetail(string slug)
+	    {
+	       await this.Navigation.PushAsync(AppPage.ConferenceDetailPage, slug);
+	    }
 		private void OnLoad ()
 		{
 			 GetConferences ();

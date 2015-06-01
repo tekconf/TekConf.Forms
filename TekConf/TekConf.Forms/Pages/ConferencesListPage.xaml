@@ -6,7 +6,10 @@
 
 
   <StackLayout>
-    <ListView ItemsSource="{Binding Conferences}" HasUnevenRows="true" SeparatorColor="Gray">
+    <ListView
+        ItemsSource="{Binding Conferences}"
+        HasUnevenRows="true"
+        SeparatorColor="Gray" SelectedItem="{Binding SelectedConference}">
     	<ListView.ItemTemplate>
     		<DataTemplate>
     			<ViewCell>

@@ -27,7 +27,7 @@ namespace TekConf.Core
 			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
 				                        offset => {
 					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 300);
+					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
 				});
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync ();
