@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Fusillade;
 using TekConf.Core.Data.Dtos;
 
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
 	public interface IConferencesService
 	{

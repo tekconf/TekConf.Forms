@@ -3,12 +3,12 @@ using System.Windows.Input;
 using PropertyChanged;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TekConf.Core;
 using Fusillade;
 using TekConf.Core.Infrastructure;
 using TekConf.Core.Data.Dtos;
+using TekConf.Core.Services;
 
-namespace TekConf.ViewModels
+namespace TekConf.Core.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferencesListViewModel : ViewModelBase

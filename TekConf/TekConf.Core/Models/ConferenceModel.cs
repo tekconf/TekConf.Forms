@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace TekConf
+namespace TekConf.Core.Data.Models
 {
 	[Table("Conferences")]
 	public class ConferenceModel

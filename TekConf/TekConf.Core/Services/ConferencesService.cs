@@ -10,9 +10,8 @@ using System.Net;
 using System.Linq;
 using TekConf.Core.Data.Dtos;
 
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
-
 	public class ConferencesService : IConferencesService
 	{
 		private readonly IApiService _apiService;

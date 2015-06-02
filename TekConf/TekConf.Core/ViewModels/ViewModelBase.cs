@@ -1,4 +1,4 @@
-namespace TekConf.ViewModels
+namespace TekConf.Core.ViewModels
 {
     public abstract class ViewModelBase : IViewModel
     {

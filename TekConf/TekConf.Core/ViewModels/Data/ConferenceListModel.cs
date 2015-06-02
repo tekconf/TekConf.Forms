@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TekConf.Core.Infrastructure;
 using Cirrious.CrossCore;
 
-namespace TekConf.ViewModels.Data
+namespace TekConf.Core.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferenceListModel : ViewModelBase

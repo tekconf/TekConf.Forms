@@ -7,8 +7,9 @@ using TekConf.Core;
 using Fusillade;
 using TekConf.Core.Infrastructure;
 using TekConf.Core.Data.Dtos;
+using TekConf.Core.Services;
 
-namespace TekConf.ViewModels
+namespace TekConf.Core.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class MyConferencesViewModel : ViewModelBase

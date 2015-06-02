@@ -1,7 +1,6 @@
 using Cirrious.CrossCore;
-using TekConf.ViewModels;
 using Xamarin.Forms;
-using TekConf.Infrastructure;
+using TekConf.Core.ViewModels;
 
 namespace TekConf.Pages
 {

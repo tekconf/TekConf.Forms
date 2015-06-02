@@ -1,4 +1,4 @@
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
 	public interface IApiService
 	{

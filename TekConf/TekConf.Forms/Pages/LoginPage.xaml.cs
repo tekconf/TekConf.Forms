@@ -1,4 +1,4 @@
-﻿using TekConf.ViewModels;
+﻿using TekConf.Core.ViewModels;
 
 namespace TekConf.Pages
 {

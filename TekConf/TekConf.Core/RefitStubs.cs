@@ -28,7 +28,7 @@ namespace RefitInternalGenerated
     }
 }
 
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
     using RefitInternalGenerated;
 

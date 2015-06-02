@@ -4,7 +4,7 @@ using Refit;
 using Fusillade;
 using ModernHttpClient;
 
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
 	public class ApiService : IApiService
 	{

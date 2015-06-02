@@ -1,6 +1,6 @@
 ﻿using PropertyChanged;
 
-namespace TekConf.ViewModels
+namespace TekConf.Core.ViewModels
 {
     [ImplementPropertyChanged]
     public class LoginViewModel : ViewModelBase

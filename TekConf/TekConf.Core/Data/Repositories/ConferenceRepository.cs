@@ -3,6 +3,7 @@ using SQLite;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using TekConf.Core.Infrastructure;
+using TekConf.Core.Data.Models;
 
 namespace TekConf.Core.Data.Repositories
 {

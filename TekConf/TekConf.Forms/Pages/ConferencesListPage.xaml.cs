@@ -1,7 +1,6 @@
-﻿using TekConf.ViewModels;
-using System;
-using TekConf.Core;
+﻿using System;
 using TekConf.Core.Data.Dtos;
+using TekConf.Core.ViewModels;
 
 namespace TekConf.Pages
 {

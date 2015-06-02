@@ -5,7 +5,7 @@ using TekConf.Core.Infrastructure;
 using Humanizer;
 using System;
 
-namespace TekConf.ViewModels
+namespace TekConf.Core.ViewModels
 {
 	[ImplementPropertyChanged]
 	public class ConferenceDetailViewModel : ViewModelBase

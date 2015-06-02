@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using TekConf.Core.Data.Dtos;
 
-namespace TekConf.Core
+namespace TekConf.Core.Services
 {
 	[Headers("Accept: application/json")]
 	public interface ITekConfApi  
