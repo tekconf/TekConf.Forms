@@ -1,9 +1,8 @@
 using System.Diagnostics;
 using System;
 
-namespace TekConf.Infrastructure
+namespace TekConf.Core.Infrastructure
 {
-
 	public static class AsyncErrorHandler
 	{
 		public static void HandleException(Exception exception)

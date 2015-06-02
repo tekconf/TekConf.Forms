@@ -1,5 +1,6 @@
 ﻿using System;
 using TekConf.Infrastructure;
+using TekConf.Core.Infrastructure;
 
 namespace TekConf.Droid
 {

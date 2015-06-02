@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using TekConf.Infrastructure;
 using Cirrious.CrossCore;
+using TekConf.Core.Infrastructure;
 
 namespace TekConf.Droid
 {

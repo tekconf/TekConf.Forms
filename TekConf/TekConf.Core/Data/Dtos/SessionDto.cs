@@ -1,11 +1,8 @@
 using System;
-using Refit;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace TekConf.Core
+namespace TekConf.Core.Data.Dtos
 {
-
 	public class SessionDto
 	{
 		public string Slug { get; set; }
@@ -31,5 +28,4 @@ namespace TekConf.Core
 		public List<SpeakerDto> Speakers { get; set; }
 
 	}
-
 }

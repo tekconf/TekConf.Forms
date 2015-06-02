@@ -1,9 +1,7 @@
-using System;
-using SQLite;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace TekConf.Core
+namespace TekConf.Core.Data.Repositories
 {
 	public interface IConferenceRepository
 	{

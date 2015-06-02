@@ -3,7 +3,7 @@ using System;
 using System.Windows.Input;
 using TekConf.Core;
 using System.Threading.Tasks;
-using TekConf.Infrastructure;
+using TekConf.Core.Infrastructure;
 using Cirrious.CrossCore;
 
 namespace TekConf.ViewModels.Data
@@ -21,15 +21,17 @@ namespace TekConf.ViewModels.Data
 
 		public ICommand ShowDetail { get; set; }
 
+		private readonly IConferencesNavigationService _conferencesNavigationService;
+
 		public ConferenceListModel ()
 		{
-			this.Navigation = Mvx.Resolve<INavigationService> ();
-			this.ShowDetail = new DelegateCommand<string> (async (slug) => await OnShowDetail (slug));
+			_conferencesNavigationService = Mvx.Resolve<IConferencesNavigationService> ();
+			this.ShowDetail = new AsyncDelegateCommand<string> (async (slug) => await OnShowDetail (slug));
 		}
 
 		async Task OnShowDetail (string slug)
 		{
-			await this.Navigation.PushAsync (AppPage.ConferenceDetailPage, slug);
+			await _conferencesNavigationService.PushAsync (AppPage.ConferenceDetailPage, slug);
 		}
 	}
 }

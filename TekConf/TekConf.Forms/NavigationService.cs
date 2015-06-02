@@ -2,31 +2,13 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using TekConf.Pages;
+using TekConf.Core.Infrastructure;
 
 namespace TekConf.Infrastructure
 {
-	public class NavigationService : INavigationService
+	public abstract class NavigationService : INavigationService
 	{
-		INavigation _navigation;
-		TabbedPage _mainTabPage;
-		NavigationPage _navigationPage;
-
-		private INavigation Navigation
-		{
-			get 
-			{
-				if (_mainTabPage == null) {
-					_mainTabPage = Application.Current.MainPage as TabbedPage;
-					_navigationPage = _mainTabPage.Children[0] as NavigationPage;
-				}
-
-				if (_mainTabPage != null && _navigation == null) {
-					_navigation = _navigationPage.Navigation;
-				}
-
-				return _navigation;
-			}
-		}
+		public abstract INavigation Navigation { get; }
 
 		public async Task PushAsync (AppPage page, object parameters)
 		{

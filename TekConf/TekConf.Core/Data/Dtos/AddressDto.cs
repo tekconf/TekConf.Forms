@@ -1,9 +1,4 @@
-using System;
-using Refit;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-namespace TekConf.Core
+namespace TekConf.Core.Data.Dtos
 {
 	public class AddressDto
 	{
@@ -14,5 +9,4 @@ namespace TekConf.Core
 		public string PostalArea { get; set; }
 		public string Country { get; set; }
 	}
-
 }

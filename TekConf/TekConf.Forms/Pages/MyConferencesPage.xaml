@@ -1,6 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:MyConferencesPageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
              x:Class="TekConf.Pages.MyConferencesPage" Title="My Conferences">
 
-</ContentPage>
+<StackLayout>
+    <ListView
+        ItemsSource="{Binding Conferences}"
+        HasUnevenRows="true"
+        SeparatorColor="Gray" 
+        ItemSelected="OnConferenceSelected" x:Name="conferencesList">
+    	<ListView.ItemTemplate>
+    		<DataTemplate>
+    			<ViewCell>
+    				<StackLayout Padding="10">
+    					<Label Text="{Binding Name}" TextColor="Black" />
+    					<Label Text="{Binding Start}" TextColor="Black" />
+    				</StackLayout>
+    			</ViewCell>
+    		</DataTemplate>
+    	</ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+
+</pages:MyConferencesPageBase>

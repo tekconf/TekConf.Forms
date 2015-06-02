@@ -1,4 +1,4 @@
-namespace TekConf.Infrastructure
+namespace TekConf.Core.Infrastructure
 {
 	public interface IFileAccessHelper
 	{

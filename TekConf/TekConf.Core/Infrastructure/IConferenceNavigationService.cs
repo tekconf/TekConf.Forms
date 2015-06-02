@@ -1,9 +1,6 @@
-using System.Threading.Tasks;
-
-namespace TekConf.Infrastructure
+namespace TekConf.Core.Infrastructure
 {
 	public interface IConferenceNavigationService : INavigationService
 	{
 	}
-	
 }

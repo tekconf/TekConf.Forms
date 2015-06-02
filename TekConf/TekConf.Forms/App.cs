@@ -2,6 +2,7 @@
 using TekConf.Pages;
 using Xamarin.Forms;
 using TekConf.Infrastructure;
+using TekConf.Core.Infrastructure;
 
 namespace TekConf
 {
@@ -9,7 +10,8 @@ namespace TekConf
     {
 		public App()
         {
-			Mvx.RegisterSingleton<INavigationService> (() => new NavigationService());
+			Mvx.RegisterType<IConferencesNavigationService, ConferencesNavigationService> ();
+			Mvx.RegisterType<IMyConferencesNavigationService, MyConferencesNavigationService> ();
 
             MainPage = new MainTabPage();
 		}

@@ -2,9 +2,9 @@
 using SQLite;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using TekConf.Infrastructure;
+using TekConf.Core.Infrastructure;
 
-namespace TekConf.Core
+namespace TekConf.Core.Data.Repositories
 {
 	public class ConferenceRepository : IConferenceRepository
 	{
@@ -28,4 +28,3 @@ namespace TekConf.Core
 		}
 	}
 }
-

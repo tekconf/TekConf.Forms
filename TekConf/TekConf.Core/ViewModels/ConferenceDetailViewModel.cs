@@ -1,10 +1,8 @@
 using System.Threading.Tasks;
 using PropertyChanged;
 using System.Windows.Input;
-using TekConf.Core;
-using TekConf.ViewModels.Data;
+using TekConf.Core.Infrastructure;
 using Humanizer;
-using System.ComponentModel;
 using System;
 
 namespace TekConf.ViewModels
@@ -24,7 +22,7 @@ namespace TekConf.ViewModels
 
 		public ConferenceDetailViewModel ()
 		{
-			this.Load = new DelegateCommand<string> (async (slug) => await OnLoad(slug));
+			this.Load = new AsyncDelegateCommand<string> (async (slug) => await OnLoad(slug));
 		}
 
 		private async Task OnLoad(string slug)

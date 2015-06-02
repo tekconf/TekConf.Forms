@@ -1,6 +1,7 @@
 ﻿using TekConf.ViewModels;
 using System;
 using TekConf.Core;
+using TekConf.Core.Data.Dtos;
 
 namespace TekConf.Pages
 {
@@ -16,7 +17,6 @@ namespace TekConf.Pages
 
 		public void OnConferenceSelected(object sender, EventArgs e)
 		{
-			//var conference = new ConferenceDto ();
 			if (conferencesList != null && conferencesList.SelectedItem != null) {
 				var conference = this.conferencesList.SelectedItem as ConferenceDto;
 				this.ViewModel.ShowDetail.Execute (conference);
@@ -30,6 +30,5 @@ namespace TekConf.Pages
 				this.conferencesList.SelectedItem = null;
 			}
 		}
-
     }
 }

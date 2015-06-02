@@ -10,6 +10,10 @@ namespace TekConf.Core
 	{
 		public const string ApiBaseAddress = "http://api.tekconf.com/v1";
 
+		private readonly Lazy<ITekConfApi> _background;
+		private readonly Lazy<ITekConfApi> _userInitiated;
+		private readonly Lazy<ITekConfApi> _speculative;
+
 		public ApiService()
 		{
 			Func<HttpMessageHandler, ITekConfApi> createClient = messageHandler =>
@@ -31,10 +35,6 @@ namespace TekConf.Core
 			_speculative = new Lazy<ITekConfApi>(() => createClient(
 				new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Speculative)));
 		}
-
-		private readonly Lazy<ITekConfApi> _background;
-		private readonly Lazy<ITekConfApi> _userInitiated;
-		private readonly Lazy<ITekConfApi> _speculative;
 
 		public ITekConfApi Background
 		{

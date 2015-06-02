@@ -1,7 +1,10 @@
 ﻿using System.Threading.Tasks;
 
-namespace TekConf.Infrastructure
+namespace TekConf.Core.Infrastructure
 {
+	public interface IConferencesNavigationService : INavigationService {}
+	public interface IMyConferencesNavigationService : INavigationService {}
+
 	public interface INavigationService
 	{
 		Task PushAsync(AppPage page);

@@ -23,8 +23,8 @@ namespace TekConf.Pages
 
             if (_viewModel != null)
             {
-				var navigation = Mvx.Resolve<INavigationService> ();
-				_viewModel.Navigation = navigation;
+				//var navigation = Mvx.Resolve<INavigationService> ();
+				//_viewModel.Navigation = navigation;
                 BindingContext = _viewModel;
             }
 

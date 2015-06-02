@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Refit;
 using System.Threading.Tasks;
+using TekConf.Core.Data.Dtos;
 
 /* ******** Hey You! *********
  *
@@ -47,6 +48,12 @@ namespace TekConf.Core
         {
             var arguments = new object[] {  };
             return (Task<List<ConferenceDto>>) methodImpls["GetConferences"](Client, arguments);
+        }
+
+        public virtual Task<List<ConferenceDto>> GetMyConferences()
+        {
+            var arguments = new object[] {  };
+            return (Task<List<ConferenceDto>>) methodImpls["GetMyConferences"](Client, arguments);
         }
 
         public virtual Task<ConferenceDto> GetConference(string slug)

@@ -8,6 +8,7 @@ using Connectivity.Plugin;
 using Polly;
 using System.Net;
 using System.Linq;
+using TekConf.Core.Data.Dtos;
 
 namespace TekConf.Core
 {
@@ -23,20 +24,38 @@ namespace TekConf.Core
 
 		public async Task<List<ConferenceDto>> GetConferences (Priority priority)
 		{
-			var conferences =  await _apiService.UserInitiated.GetConferences ();
+			//var conferences =  await _apiService.UserInitiated.GetConferences ();
+
+			var cache = BlobCache.LocalMachine;
+			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
+				                        offset => {
+					TimeSpan elapsed = DateTimeOffset.Now - offset;
+					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+				});
+
+			var conferences = await cachedConferences.FirstOrDefaultAsync ();
+
 			conferences = conferences.OrderByDescending (c => c.Start).Take (50).ToList ();
 
-//			var cache = BlobCache.LocalMachine;
-//			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
-//				                        offset => {
-//					TimeSpan elapsed = DateTimeOffset.Now - offset;
-//					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
-//				});
-//
-//			var conferences = await cachedConferences.FirstOrDefaultAsync ();
-
-
 			return conferences;
+		}
+
+		public async Task<List<ConferenceDto>> GetMyConferences (Priority priority)
+		{
+			//var myConferences =  await _apiService.UserInitiated.GetMyConferences ();
+
+			var cache = BlobCache.LocalMachine;
+			var cachedConferences = cache.GetAndFetchLatest ("myConferences", () => GetRemoteMyConferencesAsync (priority),
+				                           offset => {
+					TimeSpan elapsed = DateTimeOffset.Now - offset;
+					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+				});
+			
+			var myConferences = await cachedConferences.FirstOrDefaultAsync ();
+
+			myConferences = myConferences.OrderByDescending (c => c.Name).Take (20).ToList ();
+
+			return myConferences;
 		}
 
 		public async Task<ConferenceDto> GetConference (Priority priority, string slug)
@@ -70,19 +89,51 @@ namespace TekConf.Core
 				break;
 			}
 
-			//if (CrossConnectivity.Current.IsConnected)
-			//{
 			conferences = await Policy
 					.Handle<WebException> ()
 					.WaitAndRetryAsync
 					(
-						retryCount: 5, 
-						sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
-					)
+				retryCount: 5, 
+				sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
+			)
 					.ExecuteAsync (() => getConferencesTask);
-			//}
+			
 			if (conferences != null && conferences.Any ()) {
-				conferences = conferences.Take(10).OrderBy (c => c.Start).ToList ();
+				conferences = conferences.Take (10).OrderBy (c => c.Start).ToList ();
+			}
+			return conferences;
+		}
+
+		private async Task<List<ConferenceDto>> GetRemoteMyConferencesAsync (Priority priority)
+		{
+			List<ConferenceDto> conferences = null;
+			Task<List<ConferenceDto>> getConferencesTask;
+			switch (priority) {
+			case Priority.Background:
+				getConferencesTask = _apiService.Background.GetConferences ();
+				break;
+			case Priority.UserInitiated:
+				getConferencesTask = _apiService.UserInitiated.GetConferences ();
+				break;
+			case Priority.Speculative:
+				getConferencesTask = _apiService.Speculative.GetConferences ();
+				break;
+			default:
+				getConferencesTask = _apiService.UserInitiated.GetConferences ();
+				break;
+			}
+
+			conferences = await Policy
+				.Handle<WebException> ()
+				.WaitAndRetryAsync
+				(
+					retryCount: 5, 
+					sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
+				)
+				.ExecuteAsync (() => getConferencesTask);
+
+			if (conferences != null && conferences.Any ()) {
+				conferences = conferences.Take (10).OrderBy (c => c.Start).ToList ();
 			}
 			return conferences;
 		}

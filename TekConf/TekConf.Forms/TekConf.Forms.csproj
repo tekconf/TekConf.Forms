@@ -53,6 +53,8 @@
     <Compile Include="Pages\MyConferencesPage.xaml.cs">
       <DependentUpon>MyConferencesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyConferencesNavigationService.cs" />
+    <Compile Include="ConferencesNavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">

@@ -1,11 +1,5 @@
-using System;
-using Refit;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-namespace TekConf.Core
+namespace TekConf.Core.Data.Dtos
 {
-
 	public class SpeakerDto
 	{
 		public string Slug { get; set; }
@@ -31,5 +25,4 @@ namespace TekConf.Core
 		public string BitbucketUrl { get; set; }
 		public string CodeplexUrl { get; set; }
 	}
-
 }

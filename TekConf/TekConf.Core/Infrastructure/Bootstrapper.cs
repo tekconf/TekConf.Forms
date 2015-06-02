@@ -3,8 +3,9 @@ using TekConf.Core;
 using TekConf.ViewModels.Data;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
+using TekConf.Core.Data.Repositories;
 
-namespace TekConf.Infrastructure
+namespace TekConf.Core.Infrastructure
 {
 	public static class Bootstrapper
 	{
