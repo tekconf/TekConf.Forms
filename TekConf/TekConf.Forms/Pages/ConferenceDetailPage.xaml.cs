@@ -1,5 +1,6 @@
 ﻿using TekConf.Pages;
 using TekConf.Core.ViewModels;
+using Xamarin.Forms;
 
 namespace TekConf.Pages
 {

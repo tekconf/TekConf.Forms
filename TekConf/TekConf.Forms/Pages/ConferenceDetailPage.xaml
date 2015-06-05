@@ -2,7 +2,7 @@
 <ConferenceDetailPageBase 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="TekConf.Pages.ConferenceDetailPage">
+	x:Class="TekConf.Pages.ConferenceDetailPage" Title="{Binding Slug}">
 
 	<StackLayout>
 		<Label Text="{Binding Slug}" TextColor="Black"></Label>

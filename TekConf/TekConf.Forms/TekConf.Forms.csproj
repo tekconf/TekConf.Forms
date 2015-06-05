@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="MyConferencesNavigationService.cs" />
     <Compile Include="ConferencesNavigationService.cs" />
+    <Compile Include="Infrastructure\FormsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -135,5 +136,8 @@
       <Project>{25892563-17F3-4F53-8A5E-EA62BB3A480F}</Project>
       <Name>TekConf.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
 </Project>

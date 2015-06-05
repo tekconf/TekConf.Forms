@@ -7,8 +7,7 @@ namespace TekConf.Pages
 	public class MyConferencesPageBase : ViewPage<MyConferencesViewModel> { }
 
 	public partial class MyConferencesPage : MyConferencesPageBase
-    {
-
+	{
 		public MyConferencesPage()
         {
             InitializeComponent();

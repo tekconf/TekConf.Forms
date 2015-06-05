@@ -2,6 +2,7 @@
 using UIKit;
 using Cirrious.CrossCore;
 using TekConf.Infrastructure;
+using TekConf.Core.Infrastructure;
 
 namespace TekConf.iOS
 {

@@ -1,6 +1,7 @@
 using Cirrious.CrossCore;
 using Xamarin.Forms;
 using TekConf.Core.ViewModels;
+using TekConf.Forms.Extensions;
 
 namespace TekConf.Pages
 {
@@ -29,6 +30,7 @@ namespace TekConf.Pages
 
             this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             this.BackgroundColor = Color.White;
+			this.HideNavBarOnAndroid ();
         }
     }
 }

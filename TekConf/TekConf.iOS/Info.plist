@@ -21,11 +21,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>6.0</string>
+	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>TekConf</string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
@@ -45,6 +43,8 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
-	<string></string>
+	<string>1.0</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tekconf.ios</string>
 </dict>
 </plist>
