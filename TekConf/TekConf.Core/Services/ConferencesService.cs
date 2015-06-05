@@ -29,7 +29,7 @@ namespace TekConf.Core.Services
 			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
 				                        offset => {
 					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+					return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
 				});
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync ();
@@ -47,7 +47,7 @@ namespace TekConf.Core.Services
 			var cachedConferences = cache.GetAndFetchLatest ("myConferences", () => GetRemoteMyConferencesAsync (priority),
 				                           offset => {
 					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+					return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
 				});
 			
 			var myConferences = await cachedConferences.FirstOrDefaultAsync ();
@@ -61,7 +61,7 @@ namespace TekConf.Core.Services
 		{
 			var cachedConference = BlobCache.LocalMachine.GetAndFetchLatest (slug, () => GetRemoteConference (priority, slug), offset => {
 				TimeSpan elapsed = DateTimeOffset.Now - offset;
-				return elapsed > new TimeSpan (hours: 0, minutes: 30, seconds: 0);
+				return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
 			});
 
 			var conference = await cachedConference.FirstOrDefaultAsync ();
@@ -98,7 +98,7 @@ namespace TekConf.Core.Services
 					.ExecuteAsync (() => getConferencesTask);
 			
 			if (conferences != null && conferences.Any ()) {
-				conferences = conferences.Take (10).OrderBy (c => c.Start).ToList ();
+				conferences = conferences.OrderBy (c => c.Start).ToList ();
 			}
 			return conferences;
 		}
