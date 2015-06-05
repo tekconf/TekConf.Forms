@@ -41,11 +41,11 @@ namespace TekConf.Core.ViewModels
 			await GetConferences ();
 		}
 
-		private async Task GetConferences ()
+		private async Task GetConferences (bool force = false)
 		{
 			this.IsLoading = true;
 
-			var conferences = await _conferencesService.GetMyConferences (Priority.Explicit);
+			var conferences = await _conferencesService.GetMyConferences (force, Priority.Explicit);
 
 			this.Conferences = new ObservableCollection<ConferenceDto> (conferences);
 

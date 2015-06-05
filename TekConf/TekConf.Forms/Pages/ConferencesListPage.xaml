@@ -10,6 +10,9 @@
         ItemsSource="{Binding Conferences}"
         HasUnevenRows="true"
         SeparatorColor="Gray" 
+        IsPullToRefreshEnabled="True" 
+        RefreshCommand="{Binding Load}" 
+        IsRefreshing="{Binding IsLoading, Mode=OneWay}"
         ItemSelected="OnConferenceSelected" x:Name="conferencesList">
     	<ListView.ItemTemplate>
     		<DataTemplate>

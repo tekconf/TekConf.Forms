@@ -21,25 +21,28 @@ namespace TekConf.Core.Services
 			_apiService = apiService;
 		}
 
-		public async Task<List<ConferenceDto>> GetConferences (Priority priority)
+		public async Task<List<ConferenceDto>> GetConferences (bool force, Priority priority)
 		{
 			//var conferences =  await _apiService.UserInitiated.GetConferences ();
 
 			var cache = BlobCache.LocalMachine;
-			var cachedConferences = cache.GetAndFetchLatest ("conferences", () => GetRemoteConferencesAsync (priority),
+			var cachedConferences = cache.GetAndFetchLatest (
+										"conferences", 
+										() => GetRemoteConferencesAsync (priority),
 				                        offset => {
-					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-				});
+											TimeSpan elapsed = DateTimeOffset.Now - offset;
+											return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+										}
+			);
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync ();
 
-			conferences = conferences.OrderByDescending (c => c.Start).Take (50).ToList ();
+			conferences = conferences.OrderByDescending (c => c.Start).ToList ();
 
 			return conferences;
 		}
 
-		public async Task<List<ConferenceDto>> GetMyConferences (Priority priority)
+		public async Task<List<ConferenceDto>> GetMyConferences (bool force, Priority priority)
 		{
 			//var myConferences =  await _apiService.UserInitiated.GetMyConferences ();
 
@@ -52,7 +55,7 @@ namespace TekConf.Core.Services
 			
 			var myConferences = await cachedConferences.FirstOrDefaultAsync ();
 
-			myConferences = myConferences.OrderByDescending (c => c.Name).Take (20).ToList ();
+			myConferences = myConferences.OrderBy (c => c.Name).ToList ();
 
 			return myConferences;
 		}
@@ -132,7 +135,7 @@ namespace TekConf.Core.Services
 				.ExecuteAsync (() => getConferencesTask);
 
 			if (conferences != null && conferences.Any ()) {
-				conferences = conferences.Take (10).OrderBy (c => c.Start).ToList ();
+				conferences = conferences.OrderBy (c => c.Start).ToList ();
 			}
 			return conferences;
 		}
