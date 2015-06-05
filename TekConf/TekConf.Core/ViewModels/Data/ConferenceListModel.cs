@@ -5,6 +5,7 @@ using TekConf.Core;
 using System.Threading.Tasks;
 using TekConf.Core.Infrastructure;
 using Cirrious.CrossCore;
+using Humanizer;
 
 namespace TekConf.Core.ViewModels
 {
@@ -15,7 +16,15 @@ namespace TekConf.Core.ViewModels
 
 		public string Slug { get; set; }
 
+		[AlsoNotifyFor("FormattedStart")]
 		public DateTime? Start { get; set; }
+
+		[DependsOn("Start")]
+		public string FormattedStart {
+			get {
+				return this.Start.HasValue ? this.Start.Value.Humanize () : string.Empty;
+			}
+		}
 
 		public DateTime? End { get; set; }
 

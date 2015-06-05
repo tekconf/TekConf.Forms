@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
     <Compile Include="Pages\ConferencesListPage.xaml.cs">
       <DependentUpon>ConferencesListPage.xaml</DependentUpon>
     </Compile>
@@ -56,6 +55,9 @@
     <Compile Include="MyConferencesNavigationService.cs" />
     <Compile Include="ConferencesNavigationService.cs" />
     <Compile Include="Infrastructure\FormsExtensions.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -90,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\MyConferencesPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

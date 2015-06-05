@@ -6,17 +6,17 @@
 		x:Class="TekConf.Pages.MainTabPage" 
 		Title="Tabs">
 
-	<NavigationPage Title="Conferences">
+	<NavigationPage Title="Conferences" Icon="conferences.png">
 		<x:Arguments>
 			<pages:ConferencesListPage />
 		</x:Arguments>
 	</NavigationPage>
-	<NavigationPage Title="My Conferences">
+	<NavigationPage Title="My Conferences" Icon="myConferences.png">
 		<x:Arguments>
 			<pages:MyConferencesPage />
 		</x:Arguments>
 	</NavigationPage>
-	<NavigationPage Title="Login">
+	<NavigationPage Title="My Profile" Icon="myProfile.png">
 		<x:Arguments>
 			<pages:LoginPage Title="Login" />
 		</x:Arguments>
