@@ -170,6 +170,7 @@
     <Compile Include="FileAccessHelper.cs" />
     <Compile Include="RefitStubs.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Renderers\EmptyClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -184,6 +185,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\conferences.png" />
+    <AndroidResource Include="Resources\drawable\myConferences.png" />
+    <AndroidResource Include="Resources\drawable\myProfile.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
@@ -219,5 +223,11 @@
       <Project>{25892563-17F3-4F53-8A5E-EA62BB3A480F}</Project>
       <Name>TekConf.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\OpenSans-Light.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>

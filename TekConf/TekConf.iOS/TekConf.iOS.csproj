@@ -140,6 +140,7 @@
     <BundleResource Include="Resources\OpenSans-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\conferences.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore.Touch">
