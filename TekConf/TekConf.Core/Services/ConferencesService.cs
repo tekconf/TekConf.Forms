@@ -24,14 +24,25 @@ namespace TekConf.Core.Services
 		public async Task<List<ConferenceDto>> GetConferences (bool force, Priority priority)
 		{
 			//var conferences =  await _apiService.UserInitiated.GetConferences ();
+			TimeSpan timeSpan;
+			if (force) {
+				timeSpan = new TimeSpan (hours: 0, minutes: 0, seconds: 1);
+			} else {
+				timeSpan = new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+			}
+
 
 			var cache = BlobCache.LocalMachine;
+
+			if (force) {
+				cache.Invalidate ("conferences");
+			}
 			var cachedConferences = cache.GetAndFetchLatest (
 										"conferences", 
-										() => GetRemoteConferencesAsync (priority),
+										() => GetRemoteConferencesAsync (force, priority),
 				                        offset => {
 											TimeSpan elapsed = DateTimeOffset.Now - offset;
-											return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+											return elapsed > timeSpan;
 										}
 			);
 
@@ -47,12 +58,15 @@ namespace TekConf.Core.Services
 			//var myConferences =  await _apiService.UserInitiated.GetMyConferences ();
 
 			var cache = BlobCache.LocalMachine;
+			if (force) {
+				cache.Invalidate ("myConferences");
+			}
 			var cachedConferences = cache.GetAndFetchLatest ("myConferences", () => GetRemoteMyConferencesAsync (priority),
 				                           offset => {
 					TimeSpan elapsed = DateTimeOffset.Now - offset;
 					return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
 				});
-			
+					
 			var myConferences = await cachedConferences.FirstOrDefaultAsync ();
 
 			myConferences = myConferences.OrderBy (c => c.Name).ToList ();
@@ -62,17 +76,22 @@ namespace TekConf.Core.Services
 
 		public async Task<ConferenceDto> GetConference (Priority priority, string slug)
 		{
-			var cachedConference = BlobCache.LocalMachine.GetAndFetchLatest (slug, () => GetRemoteConference (priority, slug), offset => {
-				TimeSpan elapsed = DateTimeOffset.Now - offset;
-				return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-			});
-
-			var conference = await cachedConference.FirstOrDefaultAsync ();
+			var conferences = await GetConferences(false, priority);
+			var conference = conferences.FirstOrDefault (c => c.Slug == slug);
 
 			return conference;
+
+//			var cachedConference = BlobCache.LocalMachine.GetAndFetchLatest (slug, () => GetRemoteConference (priority, slug), offset => {
+//				TimeSpan elapsed = DateTimeOffset.Now - offset;
+//				return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+//			});
+//
+//			var conference = await cachedConference.FirstOrDefaultAsync ();
+//
+//			return conference;
 		}
 
-		private async Task<List<ConferenceDto>> GetRemoteConferencesAsync (Priority priority)
+		private async Task<List<ConferenceDto>> GetRemoteConferencesAsync (bool force, Priority priority)
 		{
 			List<ConferenceDto> conferences = null;
 			Task<List<ConferenceDto>> getConferencesTask;
@@ -101,7 +120,12 @@ namespace TekConf.Core.Services
 					.ExecuteAsync (() => getConferencesTask);
 			
 			if (conferences != null && conferences.Any ()) {
-				conferences = conferences.OrderBy (c => c.Start).ToList ();
+				if (force) {
+					conferences = conferences.OrderBy (c => c.Start).ToList ();
+				} else {
+					conferences = conferences.Take(10).OrderBy (c => c.Start).ToList ();
+				
+				}
 			}
 			return conferences;
 		}

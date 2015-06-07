@@ -4,7 +4,12 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="TekConf.Pages.ConferenceDetailPage" Title="{Binding Slug}">
 
-	<StackLayout>
-		<Label Text="{Binding Slug}" TextColor="Black"></Label>
+	<StackLayout Padding="10">
+		<Image Source="{Binding ImageUrl}" Aspect="AspectFit"  />
+	
+		<Label Text="{Binding Name}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium"></Label>
+		<Label Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
+		<Label Text="Address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
+		<Label Text="{Binding Description}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
 	</StackLayout>
 </ConferenceDetailPageBase>

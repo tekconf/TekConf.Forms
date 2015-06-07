@@ -5,6 +5,7 @@ using TekConf.Infrastructure;
 using Cirrious.CrossCore;
 using TekConf.Core.Infrastructure;
 using TekConf.Forms;
+using TwinTechs.Droid.Controls;
 
 namespace TekConf.Droid
 {
@@ -17,6 +18,9 @@ namespace TekConf.Droid
 			Bootstrapper.Init();
 
 			Mvx.RegisterType<IFileAccessHelper, FileAccessHelper> ();
+
+			AppHelper.FastCellCache = FastCellCache.Instance;
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

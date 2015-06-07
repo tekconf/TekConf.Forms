@@ -162,6 +162,12 @@
     <Reference Include="Connectivity.Plugin.Abstractions">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.1.0.2\lib\MonoAndroid10\Connectivity.Plugin.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="TwinTechsLib.Droid">
+      <HintPath>..\..\lib\TwinTechsLib.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinTechsForms">
+      <HintPath>..\..\lib\TwinTechsForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

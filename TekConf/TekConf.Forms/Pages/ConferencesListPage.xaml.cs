@@ -1,6 +1,8 @@
 ﻿using System;
 using TekConf.Core.Data.Dtos;
 using TekConf.Core.ViewModels;
+using Xamarin.Forms;
+using TekConf.Forms;
 
 namespace TekConf.Pages
 {
@@ -28,6 +30,13 @@ namespace TekConf.Pages
 			if (conferencesList != null) {
 				this.conferencesList.SelectedItem = null;
 			}
+		}
+
+		protected override void OnDisappearing ()
+		{
+			base.OnDisappearing ();
+			AppHelper.FastCellCache.FlushAllCaches ();
+
 		}
     }
 }

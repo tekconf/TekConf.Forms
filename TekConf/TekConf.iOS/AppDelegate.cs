@@ -4,6 +4,7 @@ using Cirrious.CrossCore;
 using TekConf.Infrastructure;
 using TekConf.Core.Infrastructure;
 using TekConf.Forms;
+using TwinTechs.Controls;
 
 namespace TekConf.iOS
 {
@@ -18,6 +19,7 @@ namespace TekConf.iOS
 
 			Mvx.RegisterType<IFileAccessHelper, FileAccessHelper> ();
 
+			AppHelper.FastCellCache = FastCellCache.Instance;
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

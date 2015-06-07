@@ -7,19 +7,40 @@
 <StackLayout>
     <ListView
         ItemsSource="{Binding Conferences}"
-        HasUnevenRows="true"
-        SeparatorColor="Gray" 
+		HasUnevenRows="true" 
+		SeparatorColor="Transparent" 
+		IsPullToRefreshEnabled="True" 
+		RefreshCommand="{Binding ForceLoad}" 
+		IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
         ItemSelected="OnConferenceSelected" x:Name="conferencesList">
-    	<ListView.ItemTemplate>
-    		<DataTemplate>
-    			<ViewCell>
-    				<StackLayout Padding="10">
-    					<Label Text="{Binding Name}" TextColor="Black" />
-    					<Label Text="{Binding Start}" TextColor="Black" />
-    				</StackLayout>
-    			</ViewCell>
-    		</DataTemplate>
-    	</ListView.ItemTemplate>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="5">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="30">
+								</RowDefinition>
+								<RowDefinition Height="20">
+								</RowDefinition>
+								<RowDefinition Height="20">
+								</RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="60">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Image Grid.Row="0" Grid.Column="0" Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.RowSpan="4" />
+							<Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium" />
+
+							<Label Grid.Row="1" Grid.Column="1" Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+							<Label Grid.Row="2" Grid.Column="1" Text="Address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+							
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
     </ListView>
   </StackLayout>
 

@@ -4,6 +4,8 @@ using System.Windows.Input;
 using TekConf.Core.Infrastructure;
 using Humanizer;
 using System;
+using TekConf.Core.Services;
+using Fusillade;
 
 namespace TekConf.Core.ViewModels
 {
@@ -16,18 +18,32 @@ namespace TekConf.Core.ViewModels
 
 		public string Slug { get; set; }
 
+		public string Description { get; set; }
+		public string ImageUrl { get; set; }
+
 		public DateTime? Start { get; set; }
 
 		public DateTime? End { get; set; }
 
-		public ConferenceDetailViewModel ()
+		private readonly IConferencesService _conferencesService;
+
+		public ConferenceDetailViewModel (IConferencesService conferencesService)
 		{
+			_conferencesService = conferencesService;
 			this.Load = new AsyncDelegateCommand<string> (async (slug) => await OnLoad(slug));
 		}
 
 		private async Task OnLoad(string slug)
 		{
-			this.Slug = slug.Humanize ();
+			var conference = await _conferencesService.GetConference (Priority.Explicit, slug);
+			if (conference != null) {
+				this.Name = conference.Name;
+				this.Slug = conference.Slug;
+				this.Start = conference.Start;
+				this.End = conference.End;
+				this.Description = conference.Description;
+				this.ImageUrl = conference.ImageUrl;
+			}
 		}
 	}
 }

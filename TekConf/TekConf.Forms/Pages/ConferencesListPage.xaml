@@ -1,29 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:ConferencesListPageBase xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
-             x:Class="TekConf.Pages.ConferencesListPage" Title="Conferences">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages:ConferencesListPageBase 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
+	xmlns:cells="clr-namespace:TekConf.Forms.Cells;assembly=TekConf"
+	x:Class="TekConf.Pages.ConferencesListPage" 
+	Title="Conferences">
 
-
-  <StackLayout>
-    <ListView
-        ItemsSource="{Binding Conferences}"
-        HasUnevenRows="true"
-        SeparatorColor="Gray" 
-        IsPullToRefreshEnabled="True" 
-        RefreshCommand="{Binding Load}" 
-        IsRefreshing="{Binding IsLoading, Mode=OneWay}"
-        ItemSelected="OnConferenceSelected" x:Name="conferencesList">
-    	<ListView.ItemTemplate>
-    		<DataTemplate>
-    			<ViewCell>
-    				<StackLayout Padding="10">
-    					<Label Text="{Binding Name}" TextColor="Black" />
-    					<Label Text="{Binding Start}" TextColor="Black" />
-    				</StackLayout>
-    			</ViewCell>
-    		</DataTemplate>
-    	</ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+	<StackLayout>
+		<ListView ItemsSource="{Binding Conferences}" 
+			HasUnevenRows="true" 
+			SeparatorColor="Transparent" 
+			IsPullToRefreshEnabled="True" 
+			RefreshCommand="{Binding ForceLoad}" 
+			IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
+			ItemSelected="OnConferenceSelected" 
+			x:Name="conferencesList">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<cells:ConferencesListCell />
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
 </pages:ConferencesListPageBase>

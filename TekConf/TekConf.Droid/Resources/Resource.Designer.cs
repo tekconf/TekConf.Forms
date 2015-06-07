@@ -30,6 +30,9 @@ namespace TekConf.Droid
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::TekConf.Droid.Resource.String.Hello;
 			global::Splat.Resource.String.library_name = global::TekConf.Droid.Resource.String.library_name;
 			global::ModernHttpClient.Resource.String.library_name = global::TekConf.Droid.Resource.String.library_name;
+			global::TwinTechsLib.Droid.Resource.String.ApplicationName = global::TekConf.Droid.Resource.String.ApplicationName;
+			global::TwinTechsLib.Droid.Resource.String.Hello = global::TekConf.Droid.Resource.String.Hello;
+			global::TwinTechsLib.Droid.Resource.String.library_name = global::TekConf.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
