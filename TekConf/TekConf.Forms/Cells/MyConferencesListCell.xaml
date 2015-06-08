@@ -3,7 +3,7 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:twinTechs="clr-namespace:TwinTechs.Controls;assembly=TwinTechsForms" 
-	x:Class="TekConf.Forms.Cells.ConferencesListCell">
+	x:Class="TekConf.Forms.Cells.MyConferencesListCell">
 
 	<Grid Padding="5">
 		<Grid.RowDefinitions>

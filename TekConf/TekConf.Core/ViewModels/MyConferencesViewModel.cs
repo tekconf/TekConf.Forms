@@ -15,6 +15,7 @@ namespace TekConf.Core.ViewModels
 	public class MyConferencesViewModel : ViewModelBase
 	{
 		public ICommand Load { get; private set; }
+		public ICommand ForceLoad { get; private set; }
 		public ICommand ShowDetail { get; private set; }
 		public ObservableCollection<ConferenceDto> Conferences { get; set; } = new ObservableCollection<ConferenceDto> ();
 		public bool IsLoading { get; set; }
@@ -28,6 +29,7 @@ namespace TekConf.Core.ViewModels
 			_conferencesService = conferencesService;
 
 			this.Load = new AsyncDelegateCommand (async _ => await OnLoad());
+			this.ForceLoad = new AsyncDelegateCommand (async _ => await OnForceLoad());
 			this.ShowDetail = new AsyncDelegateCommand<ConferenceDto> (async conference => await OnShowDetail(conference));
 		}
 
@@ -39,6 +41,11 @@ namespace TekConf.Core.ViewModels
 		private async Task OnLoad ()
 		{
 			await GetConferences ();
+		}
+
+		private async Task OnForceLoad ()
+		{
+			await GetConferences (force:true);
 		}
 
 		private async Task GetConferences (bool force = false)
