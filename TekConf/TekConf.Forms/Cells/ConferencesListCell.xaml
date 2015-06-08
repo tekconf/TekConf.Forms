@@ -5,27 +5,14 @@
 	xmlns:twinTechs="clr-namespace:TwinTechs.Controls;assembly=TwinTechsForms" 
 	x:Class="TekConf.Forms.Cells.ConferencesListCell">
 
-	<Grid Padding="5">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="30">
-			</RowDefinition>
-			<RowDefinition Height="20">
-			</RowDefinition>
-			<RowDefinition Height="20">
-			</RowDefinition>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="60">
-			</ColumnDefinition>
-			<ColumnDefinition Width="*">
-			</ColumnDefinition>
-		</Grid.ColumnDefinitions>
-		<twinTechs:FastImage Grid.Row="0" Grid.Column="0" x:Name="logoImage" Aspect="AspectFill" Grid.RowSpan="4" />
-		<Label Grid.Row="0" Grid.Column="1" x:Name="name" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium" />
+	<StackLayout Orientation="Horizontal" Spacing="0" MinimumHeightRequest="90">
+		<twinTechs:FastImage x:Name="logoImage" Aspect="AspectFill" WidthRequest="130" HeightRequest="90" HorizontalOptions="Start" VerticalOptions="Center" />
 
-		<Label Grid.Row="1" Grid.Column="1" x:Name="start" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
-		<Label Grid.Row="2" Grid.Column="1" x:Name="address" Text="Address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
-		
-	</Grid>
+		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Orientation="Vertical" MinimumHeightRequest="90" Padding="5">
+			<Label x:Name="name" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium" />
+			<Label x:Name="start" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+			<Label x:Name="address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+		</StackLayout>
+	</StackLayout>
 
 </twinTechs:FastCell>

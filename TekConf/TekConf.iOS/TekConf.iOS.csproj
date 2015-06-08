@@ -135,7 +135,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\conferences%402x.png" />
     <BundleResource Include="Resources\conferences%403x.png" />
-    <BundleResource Include="obj\conferences.png" />
     <BundleResource Include="Resources\myConferences.png" />
     <BundleResource Include="Resources\myConferences%402x.png" />
     <BundleResource Include="Resources\myConferences%403x.png" />
@@ -145,13 +144,13 @@
     <BundleResource Include="Resources\OpenSans-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\conferences.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
     <BundleResource Include="Resources\Icon-Small-50.png" />
     <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\conferences.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore.Touch">

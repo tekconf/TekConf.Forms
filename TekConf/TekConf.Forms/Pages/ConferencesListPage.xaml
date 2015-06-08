@@ -8,14 +8,15 @@
 	Title="Conferences">
 
 	<StackLayout>
-		<ListView ItemsSource="{Binding Conferences}" 
-			HasUnevenRows="true" 
+		<ListView 
+			ItemsSource="{Binding Conferences}" 
+			HasUnevenRows="false" 
 			SeparatorColor="Transparent" 
 			IsPullToRefreshEnabled="True" 
 			RefreshCommand="{Binding ForceLoad}" 
 			IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
 			ItemSelected="OnConferenceSelected" 
-			x:Name="conferencesList">
+			x:Name="conferencesList" RowHeight="90">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<cells:ConferencesListCell />

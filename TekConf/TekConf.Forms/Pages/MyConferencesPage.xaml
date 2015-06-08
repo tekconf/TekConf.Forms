@@ -5,21 +5,21 @@
              xmlns:cells="clr-namespace:TekConf.Forms.Cells;assembly=TekConf"
              x:Class="TekConf.Pages.MyConferencesPage" Title="My Conferences">
 
-<StackLayout>
-    <ListView
-        ItemsSource="{Binding Conferences}"
-		HasUnevenRows="true" 
-		SeparatorColor="Transparent" 
-		IsPullToRefreshEnabled="True" 
-		RefreshCommand="{Binding ForceLoad}" 
-		IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
-        ItemSelected="OnConferenceSelected" x:Name="conferencesList">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<cells:MyConferencesListCell />
-				</DataTemplate>
-			</ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+	<StackLayout>
+	    <ListView
+	        ItemsSource="{Binding Conferences}"
+			HasUnevenRows="true" 
+			SeparatorColor="Transparent" 
+			IsPullToRefreshEnabled="True" 
+			RefreshCommand="{Binding ForceLoad}" 
+			IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
+	        ItemSelected="OnConferenceSelected" x:Name="conferencesList" RowHeight="90">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<cells:MyConferencesListCell />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+	    </ListView>
+ 	</StackLayout>
 
 </pages:MyConferencesPageBase>
