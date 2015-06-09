@@ -4,10 +4,34 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:pages="clr-namespace:TekConf.Pages;assembly=TekConf"
 	xmlns:cells="clr-namespace:TekConf.Forms.Cells;assembly=TekConf"
+	xmlns:cnvt="clr-namespace:TekConf.Forms.Converters;assembly=TekConf"
 	x:Class="TekConf.Pages.ConferencesListPage" 
 	Title="Conferences">
 
+	<pages:ConferencesListPageBase.Resources>
+		<ResourceDictionary>
+			<cnvt:EmptyCollectionVisibleLabelConverter x:Key="collectionVisibleConverter" />
+			<cnvt:EmptyCollectionInvisibleLabelConverter x:Key="collectionInvisibleConverter" />
+		</ResourceDictionary>
+	</pages:ConferencesListPageBase.Resources>
+
 	<StackLayout>
+		<StackLayout
+			HorizontalOptions="CenterAndExpand"
+			IsVisible="{Binding Conferences, Converter={StaticResource collectionVisibleConverter}}">
+
+			<Label 
+				HorizontalOptions="CenterAndExpand"
+				Text="No results" 
+				TextColor="Black" />
+
+			<Button
+				HorizontalOptions="CenterAndExpand" 
+				Text="Refresh" 
+				Command="{Binding ForceLoad}" />
+		</StackLayout>
+
+
 		<ListView 
 			ItemsSource="{Binding Conferences}" 
 			HasUnevenRows="false" 
@@ -16,7 +40,9 @@
 			RefreshCommand="{Binding ForceLoad}" 
 			IsRefreshing="{Binding IsLoading, Mode=OneWay}" 
 			ItemSelected="OnConferenceSelected" 
-			x:Name="conferencesList" RowHeight="90">
+			IsVisible="{Binding Conferences, Converter={StaticResource collectionInvisibleConverter}}"
+			x:Name="conferencesList" 
+			RowHeight="90">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<cells:ConferencesListCell />

@@ -24,25 +24,19 @@ namespace TekConf.Core.Services
 		public async Task<List<ConferenceDto>> GetConferences (bool force, Priority priority)
 		{
 			//var conferences =  await _apiService.UserInitiated.GetConferences ();
-			TimeSpan timeSpan;
-			if (force) {
-				timeSpan = new TimeSpan (hours: 0, minutes: 0, seconds: 1);
-			} else {
-				timeSpan = new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-			}
-
 
 			var cache = BlobCache.LocalMachine;
-
+		
 			if (force) {
 				cache.Invalidate ("conferences");
 			}
+
 			var cachedConferences = cache.GetAndFetchLatest (
 										"conferences", 
 										() => GetRemoteConferencesAsync (force, priority),
 				                        offset => {
 											TimeSpan elapsed = DateTimeOffset.Now - offset;
-											return elapsed > timeSpan;
+											return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
 										}
 			);
 

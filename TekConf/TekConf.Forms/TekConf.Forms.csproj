@@ -65,6 +65,8 @@
     <Compile Include="Cells\MyConferencesListCell.xaml.cs">
       <DependentUpon>MyConferencesListCell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\NotBoolConverter.cs" />
+    <Compile Include="Converters\EmptyCollectionVisibleLabelConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -160,5 +162,6 @@
   <ItemGroup>
     <Folder Include="Infrastructure\" />
     <Folder Include="Cells\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
