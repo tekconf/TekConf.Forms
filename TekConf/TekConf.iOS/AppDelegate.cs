@@ -13,6 +13,10 @@ namespace TekConf.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+			#if DEBUG
+			Xamarin.Calabash.Start();
+			#endif
+
             global::Xamarin.Forms.Forms.Init();
 
 			Bootstrapper.Init();
