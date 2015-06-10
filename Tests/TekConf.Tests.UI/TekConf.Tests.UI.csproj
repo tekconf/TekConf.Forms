@@ -38,6 +38,9 @@
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
+    <Reference Include="Should">
+      <HintPath>..\..\packages\Should.1.1.20\lib\Should.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Screens\Scopes.cs" />
@@ -51,11 +54,22 @@
     <Compile Include="Infrastructure\Simulator.cs" />
     <Compile Include="Infrastructure\SimulatorNames.cs" />
     <Compile Include="Infrastructure\TestHelpers.cs" />
+    <Compile Include="list_conferences.feature.cs">
+      <DependentUpon>list_conferences.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\CommonSteps.cs" />
+    <Compile Include="Features\ListConferencesFeature.cs" />
+    <Compile Include="Steps\ConferencesListSteps.cs" />
+    <Compile Include="Steps\StepsBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
+    <None Include="list_conferences.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>list_conferences.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TekConf\TekConf.iOS\TekConf.iOS.csproj">

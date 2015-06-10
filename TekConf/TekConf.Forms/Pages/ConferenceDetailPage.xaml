@@ -9,7 +9,7 @@
 	
 		<Label Text="{Binding Name}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium"></Label>
 		<Label Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
-		<Label Text="Address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
+		<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
 		<Label Text="{Binding Description}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
 	</StackLayout>
 </ConferenceDetailPageBase>

@@ -5,6 +5,8 @@ namespace TekConf.Tests.UI.Screens
 {
 	public interface IConferenceList
 	{
-		Func<AppQuery, AppQuery> addButton {get;}
+		Func<AppQuery, AppQuery> conferencesList { get; }
+
+		Func<AppQuery, AppQuery> conferenceListCells { get; }
 	}
 }
