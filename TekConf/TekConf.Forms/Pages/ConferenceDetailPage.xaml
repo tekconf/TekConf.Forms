@@ -4,30 +4,44 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="TekConf.Pages.ConferenceDetailPage" 
 	xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+	xmlns:cells="clr-namespace:TekConf.Forms.Cells;assembly=TekConf"
 	Title="{Binding Name}">
 
 	<ScrollView>
-		<StackLayout Padding="10">
-			<Image Source="{Binding ImageUrl}" Aspect="AspectFit"  />
+		<StackLayout Padding="10" HorizontalOptions="CenterAndExpand">
+			<Image Source="{Binding Conference.ImageUrl}" Aspect="AspectFit"  />
 		
-			<Label Text="{Binding Name}" LineBreakMode="WordWrap" 
+			<Label Text="{Binding Conference.Name}" LineBreakMode="WordWrap" 
 					TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
 
-			<Label Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" 
+			<Label Text="{Binding Conference.Start}" LineBreakMode="WordWrap" TextColor="Black" 
 				FontSize="Small" HorizontalOptions="CenterAndExpand" />
 
 			<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 
-			<Label Text="{Binding Description}" LineBreakMode="WordWrap" TextColor="Black"
+			<Label Text="{Binding Conference.Description}" LineBreakMode="WordWrap" TextColor="Black"
 				 FontSize="Small" />
 
-			<Button Text="Add to My Schedule" HorizontalOptions="CenterAndExpand" />
+			<Button Text="Add to My Schedule" HorizontalOptions="CenterAndExpand" BorderRadius="1" BorderColor="Green" BorderWidth="1" />
 
-			<maps:Map
+			<maps:Map HeightRequest="300"
 	            x:Name="conferenceLocationMap"
 	            IsShowingUser="true" 
 	            MapType="Street"
 	        />
+
+			<ListView 
+				ItemsSource="{Binding Conference.Sessions}" 
+				HasUnevenRows="false" 
+				SeparatorColor="Transparent"
+				x:Name="sessionsList" 
+				RowHeight="120">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<cells:ConferenceListSessionsListCell />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
 		</StackLayout>
 	</ScrollView>
 </ConferenceDetailPageBase>

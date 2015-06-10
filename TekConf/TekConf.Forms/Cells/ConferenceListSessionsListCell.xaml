@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<twinTechs:FastCell 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:twinTechs="clr-namespace:TwinTechs.Controls;assembly=TwinTechsForms" 
+	x:Class="TekConf.Forms.Cells.ConferenceListSessionsListCell">
+
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="5">
+		<Label x:Name="title" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+		<Label x:Name="start" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+		<Label x:Name="end" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+	</StackLayout>
+	
+</twinTechs:FastCell>

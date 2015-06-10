@@ -42,7 +42,7 @@ namespace TekConf.Core.Services
 
 			var conferences = await cachedConferences.FirstOrDefaultAsync ();
 
-			conferences = conferences.OrderByDescending (c => c.Start).ToList ();
+			conferences = conferences.Where(x => x.Sessions.Any()).OrderByDescending (c => c.Start).ToList ();
 
 			return conferences;
 		}

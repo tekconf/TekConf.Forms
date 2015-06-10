@@ -67,6 +67,9 @@
     </Compile>
     <Compile Include="Converters\NotBoolConverter.cs" />
     <Compile Include="Converters\EmptyCollectionVisibleLabelConverter.cs" />
+    <Compile Include="Cells\ConferenceListSessionsListCell.xaml.cs">
+      <DependentUpon>ConferenceListSessionsListCell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -116,6 +119,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Cells\MyConferencesListCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cells\ConferenceListSessionsListCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

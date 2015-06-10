@@ -13,7 +13,7 @@ namespace TekConf.Pages
 		{
 			InitializeComponent ();
 			this.ViewModel.Load.Execute (slug);
-			conferenceLocationMap.WidthRequest = this.Width;
+			//conferenceLocationMap.WidthRequest = this.Width;
 
 		}
 	}
