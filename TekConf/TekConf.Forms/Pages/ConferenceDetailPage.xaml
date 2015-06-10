@@ -2,14 +2,32 @@
 <ConferenceDetailPageBase 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="TekConf.Pages.ConferenceDetailPage" Title="{Binding Slug}">
+	x:Class="TekConf.Pages.ConferenceDetailPage" 
+	xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+	Title="{Binding Name}">
 
-	<StackLayout Padding="10">
-		<Image Source="{Binding ImageUrl}" Aspect="AspectFit"  />
-	
-		<Label Text="{Binding Name}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium"></Label>
-		<Label Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
-		<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
-		<Label Text="{Binding Description}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small"></Label>
-	</StackLayout>
+	<ScrollView>
+		<StackLayout Padding="10">
+			<Image Source="{Binding ImageUrl}" Aspect="AspectFit"  />
+		
+			<Label Text="{Binding Name}" LineBreakMode="WordWrap" 
+					TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+
+			<Label Text="{Binding Start}" LineBreakMode="WordWrap" TextColor="Black" 
+				FontSize="Small" HorizontalOptions="CenterAndExpand" />
+
+			<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+
+			<Label Text="{Binding Description}" LineBreakMode="WordWrap" TextColor="Black"
+				 FontSize="Small" />
+
+			<Button Text="Add to My Schedule" HorizontalOptions="CenterAndExpand" />
+
+			<maps:Map
+	            x:Name="conferenceLocationMap"
+	            IsShowingUser="true" 
+	            MapType="Street"
+	        />
+		</StackLayout>
+	</ScrollView>
 </ConferenceDetailPageBase>

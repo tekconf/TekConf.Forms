@@ -1,6 +1,7 @@
 ﻿using TekConf.Pages;
 using TekConf.Core.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace TekConf.Pages
 {
@@ -12,6 +13,8 @@ namespace TekConf.Pages
 		{
 			InitializeComponent ();
 			this.ViewModel.Load.Execute (slug);
+			conferenceLocationMap.WidthRequest = this.Width;
+
 		}
 	}
 }

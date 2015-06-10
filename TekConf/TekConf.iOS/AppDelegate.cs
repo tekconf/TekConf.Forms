@@ -17,7 +17,9 @@ namespace TekConf.iOS
 			Xamarin.Calabash.Start();
 			#endif
 
+
             global::Xamarin.Forms.Forms.Init();
+			Xamarin.FormsMaps.Init();
 
 			Bootstrapper.Init();
 

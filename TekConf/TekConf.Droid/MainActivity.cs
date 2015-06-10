@@ -22,6 +22,7 @@ namespace TekConf.Droid
 			AppHelper.FastCellCache = FastCellCache.Instance;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+			Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App());
         }
     }
