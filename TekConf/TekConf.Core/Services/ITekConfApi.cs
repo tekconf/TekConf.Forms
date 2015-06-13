@@ -13,7 +13,7 @@ namespace TekConf.Core.Services
 		Task<List<ConferenceDto>> GetConferences();
 
 		[Get("/conferences?showPastConferences=true")]
-		Task<List<ConferenceDto>> GetMyConferences();
+		Task<List<MyConferenceDto>> GetMyConferences();
 
 		[Get("/conferences/{slug}")]
 		Task<ConferenceDto> GetConference(string slug);

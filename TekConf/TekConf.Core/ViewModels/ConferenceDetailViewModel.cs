@@ -5,6 +5,7 @@ using TekConf.Core.Infrastructure;
 using TekConf.Core.Services;
 using Fusillade;
 using TekConf.Core.Data.Dtos;
+using System;
 
 namespace TekConf.Core.ViewModels
 {
@@ -12,7 +13,7 @@ namespace TekConf.Core.ViewModels
 	public class ConferenceDetailViewModel : ViewModelBase
 	{
 		public ICommand Load { get; set; }
-
+		public event EventHandler<EventArgs> Loaded = delegate{};
 		private readonly IConferencesService _conferencesService;
 
 		public ConferenceDto Conference { get; set; }
@@ -28,6 +29,7 @@ namespace TekConf.Core.ViewModels
 			var conference = await _conferencesService.GetConference (Priority.Explicit, slug);
 			if (conference != null) {
 				this.Conference = conference;
+				Loaded (this, new EventArgs ());
 			}
 		}
 	}

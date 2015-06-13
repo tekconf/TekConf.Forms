@@ -16,7 +16,7 @@ namespace TekConf.Forms.Cells
 
 		protected override void SetupCell (bool isRecycled)
 		{
-			var conference = BindingContext as ConferenceDto;
+			var conference = BindingContext as MyConferenceDto;
 			if (conference != null) {
 				logoImage.ImageUrl = conference.ImageUrl ?? "";
 				name.Text = conference.Name;

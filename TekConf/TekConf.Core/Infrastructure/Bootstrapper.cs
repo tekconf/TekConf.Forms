@@ -5,7 +5,7 @@ using TekConf.Core.Data.Repositories;
 using TekConf.Core.Data.Models;
 using TekConf.Core.ViewModels;
 using TekConf.Core.Services;
-
+using Akavache;
 namespace TekConf.Core.Infrastructure
 {
 	public static class Bootstrapper
@@ -15,6 +15,9 @@ namespace TekConf.Core.Infrastructure
 			Mapper.CreateMap<ConferenceModel, ConferenceListModel> ();
 
 			MvxSimpleIoCContainer.Initialize();
+
+			BlobCache.ApplicationName = "tekconf";
+			BlobCache.EnsureInitialized ();
 
 			Mvx.RegisterType<IConferenceRepository, ConferenceRepository> ();
 			Mvx.RegisterType<IApiService, ApiService> ();

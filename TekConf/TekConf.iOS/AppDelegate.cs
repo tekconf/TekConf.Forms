@@ -1,7 +1,6 @@
 ﻿using Foundation;
 using UIKit;
 using Cirrious.CrossCore;
-using TekConf.Infrastructure;
 using TekConf.Core.Infrastructure;
 using TekConf.Forms;
 using TwinTechs.Controls;
@@ -17,10 +16,8 @@ namespace TekConf.iOS
 			Xamarin.Calabash.Start();
 			#endif
 
-
             global::Xamarin.Forms.Forms.Init();
 			Xamarin.FormsMaps.Init();
-
 			Bootstrapper.Init();
 
 			Mvx.RegisterType<IFileAccessHelper, FileAccessHelper> ();

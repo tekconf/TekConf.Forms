@@ -18,7 +18,7 @@ namespace TekConf.Pages
 		public void OnConferenceSelected(object sender, EventArgs e)
 		{
 			if (conferencesList != null && conferencesList.SelectedItem != null) {
-				var conference = this.conferencesList.SelectedItem as ConferenceDto;
+				var conference = this.conferencesList.SelectedItem as MyConferenceDto;
 
 				this.ViewModel.ShowDetail.Execute (conference);
 			}

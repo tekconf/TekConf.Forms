@@ -5,43 +5,49 @@
 	x:Class="TekConf.Pages.ConferenceDetailPage" 
 	xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 	xmlns:cells="clr-namespace:TekConf.Forms.Cells;assembly=TekConf"
-	Title="{Binding Name}">
+	xmlns:twinTechs="clr-namespace:TwinTechs.Controls;assembly=TwinTechsForms" 
+	Title="{Binding Conference.Name}">
 
 	<ScrollView>
 		<StackLayout Padding="10" HorizontalOptions="CenterAndExpand">
-			<Image Source="{Binding Conference.ImageUrl}" Aspect="AspectFit"  />
-		
-			<Label Text="{Binding Conference.Name}" LineBreakMode="WordWrap" 
-					TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+			<StackLayout x:Name="loadingLayout" IsVisible="true">
+				<Label Text="Loading" />
+			</StackLayout>
+			<StackLayout x:Name="detailLayout" IsVisible="false">
+				<twinTechs:FastImage Source="{Binding Conference.ImageUrl}" Aspect="AspectFit"  />
+			
+				<Label Text="{Binding Conference.Name}" LineBreakMode="WordWrap" 
+						TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
 
-			<Label Text="{Binding Conference.Start}" LineBreakMode="WordWrap" TextColor="Black" 
-				FontSize="Small" HorizontalOptions="CenterAndExpand" />
+				<Label Text="{Binding Conference.Start}" LineBreakMode="WordWrap" TextColor="Black" 
+					FontSize="Small" HorizontalOptions="CenterAndExpand" />
 
-			<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+				<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 
-			<Label Text="{Binding Conference.Description}" LineBreakMode="WordWrap" TextColor="Black"
-				 FontSize="Small" />
+				<Label Text="{Binding Conference.Description}" LineBreakMode="WordWrap" TextColor="Black"
+					 FontSize="Small" />
 
-			<Button Text="Add to My Schedule" HorizontalOptions="CenterAndExpand" BorderRadius="1" BorderColor="Green" BorderWidth="1" />
+				<Button Text="Add to My Schedule" HorizontalOptions="FillAndExpand" BorderRadius="2" BorderColor="Gray" BorderWidth="1" BackgroundColor="#72c02c" TextColor="White" />
 
-			<maps:Map HeightRequest="300"
-	            x:Name="conferenceLocationMap"
-	            IsShowingUser="true" 
-	            MapType="Street"
-	        />
+				<maps:Map HeightRequest="200"
+		            x:Name="conferenceLocationMap"
+		            IsShowingUser="true" 
+		            MapType="Street">
+		        </maps:Map>
 
-			<ListView 
-				ItemsSource="{Binding Conference.Sessions}" 
-				HasUnevenRows="false" 
-				SeparatorColor="Transparent"
-				x:Name="sessionsList" 
-				RowHeight="120">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<cells:ConferenceListSessionsListCell />
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
+				<ListView 
+					ItemsSource="{Binding Conference.Sessions}" 
+					HasUnevenRows="false" 
+					SeparatorColor="Transparent"
+					x:Name="sessionsList" 
+					RowHeight="120">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<cells:ConferenceListSessionsListCell />
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</StackLayout>
 		</StackLayout>
 	</ScrollView>
 </ConferenceDetailPageBase>

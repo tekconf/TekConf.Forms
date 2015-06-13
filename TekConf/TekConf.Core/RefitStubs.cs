@@ -50,10 +50,10 @@ namespace TekConf.Core.Services
             return (Task<List<ConferenceDto>>) methodImpls["GetConferences"](Client, arguments);
         }
 
-        public virtual Task<List<ConferenceDto>> GetMyConferences()
+        public virtual Task<List<MyConferenceDto>> GetMyConferences()
         {
             var arguments = new object[] {  };
-            return (Task<List<ConferenceDto>>) methodImpls["GetMyConferences"](Client, arguments);
+            return (Task<List<MyConferenceDto>>) methodImpls["GetMyConferences"](Client, arguments);
         }
 
         public virtual Task<ConferenceDto> GetConference(string slug)

@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.arteksoftware.tekconf" android:versionName="0.0.04" android:versionCode="4">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.arteksoftware.tekconf.droid" android:versionName="0.0.04" android:versionCode="4">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="21" />
 	<application android:icon="@drawable/ic_launcher" android:label="TekConf">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDbPDfpYQdFjTuidB31wREImka4KFqRifc" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAelgdMUpEY-CGz0AYk-l7Z68O_rB5PuRg" />
 	</application>
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-
-
 </manifest>

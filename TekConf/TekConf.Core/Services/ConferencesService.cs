@@ -23,45 +23,33 @@ namespace TekConf.Core.Services
 
 		public async Task<List<ConferenceDto>> GetConferences (bool force, Priority priority)
 		{
-			//var conferences =  await _apiService.UserInitiated.GetConferences ();
-
 			var cache = BlobCache.LocalMachine;
-		
-			if (force) {
-				cache.Invalidate ("conferences");
+			var time = new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+
+			await cache.InvalidateAllObjects<ConferenceDto> ();
+			var conferences = await GetRemoteConferencesAsync (force, priority);
+
+			var newConfs = conferences.GroupBy(x => x.Slug).Select(g => g.First());
+			foreach (var conf in newConfs) {
+				await cache.InsertObject<ConferenceDto> (conf.Slug, conf, DateTimeOffset.Now.Add (time));
 			}
 
-			var cachedConferences = cache.GetAndFetchLatest (
-										"conferences", 
-										() => GetRemoteConferencesAsync (force, priority),
-				                        offset => {
-											TimeSpan elapsed = DateTimeOffset.Now - offset;
-											return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-										}
-			);
-
-			var conferences = await cachedConferences.FirstOrDefaultAsync ();
-
-			conferences = conferences.Where(x => x.Sessions.Any()).OrderByDescending (c => c.Start).ToList ();
-
+			conferences = conferences.Where (x => x.Sessions.Any ()).OrderByDescending (c => c.Start).ToList ();
 			return conferences;
 		}
 
-		public async Task<List<ConferenceDto>> GetMyConferences (bool force, Priority priority)
+		public async Task<List<MyConferenceDto>> GetMyConferences (bool force, Priority priority)
 		{
-			//var myConferences =  await _apiService.UserInitiated.GetMyConferences ();
-
 			var cache = BlobCache.LocalMachine;
-			if (force) {
-				cache.Invalidate ("myConferences");
+			var time = new TimeSpan (hours: 0, minutes: 5, seconds: 0);
+
+			await cache.InvalidateAllObjects<MyConferenceDto> ();
+			var myConferences = await GetRemoteMyConferencesAsync (force, priority);
+
+			var newConfs = myConferences.GroupBy(x => x.Slug).Select(g => g.First());
+			foreach (var conf in newConfs) {
+				await cache.InsertObject<MyConferenceDto> (conf.Slug, conf, DateTimeOffset.Now.Add (time));
 			}
-			var cachedConferences = cache.GetAndFetchLatest ("myConferences", () => GetRemoteMyConferencesAsync (priority),
-				                           offset => {
-					TimeSpan elapsed = DateTimeOffset.Now - offset;
-					return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-				});
-					
-			var myConferences = await cachedConferences.FirstOrDefaultAsync ();
 
 			myConferences = myConferences.OrderBy (c => c.Name).ToList ();
 
@@ -70,19 +58,20 @@ namespace TekConf.Core.Services
 
 		public async Task<ConferenceDto> GetConference (Priority priority, string slug)
 		{
-			var conferences = await GetConferences(false, priority);
-			var conference = conferences.FirstOrDefault (c => c.Slug == slug);
+			var cache = BlobCache.LocalMachine;
+
+			var conference = await cache.GetObject<ConferenceDto> (slug).FirstAsync ();
 
 			return conference;
+		}
 
-//			var cachedConference = BlobCache.LocalMachine.GetAndFetchLatest (slug, () => GetRemoteConference (priority, slug), offset => {
-//				TimeSpan elapsed = DateTimeOffset.Now - offset;
-//				return elapsed > new TimeSpan (hours: 0, minutes: 5, seconds: 0);
-//			});
-//
-//			var conference = await cachedConference.FirstOrDefaultAsync ();
-//
-//			return conference;
+		public async Task<MyConferenceDto> GetMyConference (Priority priority, string slug)
+		{
+			var cache = BlobCache.LocalMachine;
+
+			var conference = await cache.GetObject<MyConferenceDto> (slug).FirstAsync ();
+
+			return conference;
 		}
 
 		private async Task<List<ConferenceDto>> GetRemoteConferencesAsync (bool force, Priority priority)
@@ -110,36 +99,35 @@ namespace TekConf.Core.Services
 					(
 				retryCount: 5, 
 				sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
-			)
-					.ExecuteAsync (() => getConferencesTask);
+			).ExecuteAsync (() => getConferencesTask);
 			
 			if (conferences != null && conferences.Any ()) {
 				if (force) {
 					conferences = conferences.OrderBy (c => c.Start).ToList ();
 				} else {
-					conferences = conferences.Take(10).OrderBy (c => c.Start).ToList ();
+					conferences = conferences.OrderBy (c => c.Start).ToList ();
 				
 				}
 			}
 			return conferences;
 		}
 
-		private async Task<List<ConferenceDto>> GetRemoteMyConferencesAsync (Priority priority)
+		private async Task<List<MyConferenceDto>> GetRemoteMyConferencesAsync (bool force, Priority priority)
 		{
-			List<ConferenceDto> conferences = null;
-			Task<List<ConferenceDto>> getConferencesTask;
+			List<MyConferenceDto> conferences = null;
+			Task<List<MyConferenceDto>> getConferencesTask;
 			switch (priority) {
 			case Priority.Background:
-				getConferencesTask = _apiService.Background.GetConferences ();
+				getConferencesTask = _apiService.Background.GetMyConferences ();
 				break;
 			case Priority.UserInitiated:
-				getConferencesTask = _apiService.UserInitiated.GetConferences ();
+				getConferencesTask = _apiService.UserInitiated.GetMyConferences ();
 				break;
 			case Priority.Speculative:
-				getConferencesTask = _apiService.Speculative.GetConferences ();
+				getConferencesTask = _apiService.Speculative.GetMyConferences ();
 				break;
 			default:
-				getConferencesTask = _apiService.UserInitiated.GetConferences ();
+				getConferencesTask = _apiService.UserInitiated.GetMyConferences ();
 				break;
 			}
 
@@ -147,9 +135,9 @@ namespace TekConf.Core.Services
 				.Handle<WebException> ()
 				.WaitAndRetryAsync
 				(
-					retryCount: 5, 
-					sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
-				)
+				retryCount: 5, 
+				sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds (Math.Pow (2, retryAttempt))
+			)
 				.ExecuteAsync (() => getConferencesTask);
 
 			if (conferences != null && conferences.Any ()) {

@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Cirrious.CrossCore;
-using TekConf.Core.Infrastructure;
-using TekConf.Pages;
-using TekConf.Infrastructure;
 using TwinTechs.Controls;
 
 namespace TekConf.Forms

@@ -32,10 +32,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
-    <AndroidSigningKeyStore>~/Library/Developer/Xamarin/Keystore/Tekconf/Tekconf.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>/Users/rob/Library/Developer/Xamarin/Keystore/Tekconf/Tekconf.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>Xz4*b.17/1</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>Tekconf</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Xz4*b.17/1</AndroidSigningKeyPass>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidKeyStore>True</AndroidKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>

@@ -7,6 +7,8 @@ using Fusillade;
 using TekConf.Core.Infrastructure;
 using TekConf.Core.Data.Dtos;
 using TekConf.Core.Services;
+using Akavache;
+using System.Reactive.Linq;
 
 namespace TekConf.Core.ViewModels
 {
