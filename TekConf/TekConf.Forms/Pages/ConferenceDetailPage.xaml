@@ -16,16 +16,13 @@
 			<StackLayout x:Name="detailLayout" IsVisible="false">
 				<twinTechs:FastImage Source="{Binding Conference.ImageUrl}" Aspect="AspectFit"  />
 			
-				<Label Text="{Binding Conference.Name}" LineBreakMode="WordWrap" 
-						TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+				<Label Text="{Binding Conference.Name}" LineBreakMode="WordWrap"  TextColor="Black" FontSize="Large" HorizontalOptions="CenterAndExpand" />
 
-				<Label Text="{Binding Conference.Start}" LineBreakMode="WordWrap" TextColor="Black" 
-					FontSize="Small" HorizontalOptions="CenterAndExpand" />
+				<Label Text="{Binding Conference.Date}" LineBreakMode="WordWrap" TextColor="Black"  FontSize="Small" HorizontalOptions="CenterAndExpand" />
 
 				<Label Text="" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 
-				<Label Text="{Binding Conference.Description}" LineBreakMode="WordWrap" TextColor="Black"
-					 FontSize="Small" />
+				<Label Text="{Binding Conference.Description}" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 
 				<Button Text="Add to My Schedule" HorizontalOptions="FillAndExpand" BorderRadius="2" BorderColor="Gray" BorderWidth="1" BackgroundColor="#72c02c" TextColor="White" />
 
@@ -34,6 +31,8 @@
 		            IsShowingUser="true" 
 		            MapType="Street">
 		        </maps:Map>
+
+		        <Label Text="Sessions" HorizontalOptions="FillAndExpand" FontSize="Medium" />
 
 				<ListView 
 					ItemsSource="{Binding Conference.Sessions}" 

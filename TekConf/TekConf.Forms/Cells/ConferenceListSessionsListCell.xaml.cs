@@ -16,8 +16,7 @@ namespace TekConf.Forms.Cells
 			if (session != null) {
 //				logoImage.ImageUrl = conference.ImageUrl ?? "";
 				title.Text = session.Title;
-				start.Text = session.Start.ToString ();
-				end.Text = session.End.ToString();
+				date.Text = session.Date;
 			}
 		}
 	}

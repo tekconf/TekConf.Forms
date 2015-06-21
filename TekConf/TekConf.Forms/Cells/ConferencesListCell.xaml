@@ -10,7 +10,7 @@
 
 		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Orientation="Vertical" MinimumHeightRequest="90" Padding="5">
 			<Label x:Name="name" LineBreakMode="WordWrap" TextColor="Black" FontSize="Medium" />
-			<Label x:Name="start" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+			<Label x:Name="date" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 			<Label x:Name="address" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 		</StackLayout>
 	</StackLayout>

@@ -9,6 +9,7 @@ using Polly;
 using System.Net;
 using System.Linq;
 using TekConf.Core.Data.Dtos;
+using Refit;
 
 namespace TekConf.Core.Services
 {
@@ -94,7 +95,7 @@ namespace TekConf.Core.Services
 			}
 
 			conferences = await Policy
-					.Handle<WebException> ()
+					.Handle<ApiException> ()
 					.WaitAndRetryAsync
 					(
 				retryCount: 5, 

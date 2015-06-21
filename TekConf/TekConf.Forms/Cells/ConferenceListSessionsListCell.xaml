@@ -7,8 +7,7 @@
 
 	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="5">
 		<Label x:Name="title" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
-		<Label x:Name="start" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
-		<Label x:Name="end" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
+		<Label x:Name="date" LineBreakMode="WordWrap" TextColor="Black" FontSize="Small" />
 	</StackLayout>
 	
 </twinTechs:FastCell>

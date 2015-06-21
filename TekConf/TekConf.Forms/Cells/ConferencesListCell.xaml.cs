@@ -16,7 +16,7 @@ namespace TekConf.Forms.Cells
 			if (conference != null) {
 				logoImage.ImageUrl = conference.ImageUrl ?? "";
 				name.Text = conference.Name;
-				start.Text = conference.Start.ToString ();
+				date.Text = conference.Date;
 				address.Text = "address";
 			}
 		}
